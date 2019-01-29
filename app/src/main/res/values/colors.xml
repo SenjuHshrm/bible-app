@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#BCFF79</color>
+    <color name="colorPrimaryDark">#7c7c3f</color>
+    <color name="colorAccent">#FFFFFF</color>
+    <color name="halfDone">#ff9428</color>
+    <color name="wholeDone">#00aa00</color>
+    <color name="noWork">#ff0f0f</color>
+    <color name="notYet">#b5b5b5</color>
+    <color name="workToday">#e6ff97</color>
+    <color name="bgTransparent">#00FFFFFF</color>
+    <color name="bgTransparent2">#90FFFFFF</color>
+</resources>

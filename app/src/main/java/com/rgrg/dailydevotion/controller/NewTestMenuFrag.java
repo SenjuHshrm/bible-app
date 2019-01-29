@@ -12,10 +12,10 @@ import com.rgrg.dailydevotion.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class OldTestMenuFrag extends Fragment {
+public class NewTestMenuFrag extends Fragment {
 
 
-    public OldTestMenuFrag() {
+    public NewTestMenuFrag() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class OldTestMenuFrag extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_old_test_menu, container, false);
+        return inflater.inflate(R.layout.fragment_new_test_menu, container, false);
     }
 
 }

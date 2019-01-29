@@ -1,13 +1,44 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.rgrg.dailydevotion.controller.TestamentFrag">
+    android:background="@color/colorBg"
+    tools:context="com.rgrg.dailydevotion.controller.TestamentFrag" >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <Button
+        android:id="@+id/btnOldT"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="190dp"
+        android:layout_marginEnd="60dp"
+        android:background="@drawable/btn_border"
+        android:text="@string/lblOld"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="@color/colorBg"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/btnNewT"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginEnd="60dp"
+        android:background="@drawable/btn_border"
+        android:text="@string/lblNew"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="@color/colorBg"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnOldT" />
+</android.support.constraint.ConstraintLayout>

@@ -63,10 +63,10 @@ public class MainMenuFrag extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.bibleBtn:
-                Toast.makeText(getContext(), "Bible button", Toast.LENGTH_SHORT).show();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, new TestamentFrag(), "TestamentFrag").commit();
                 break;
             case R.id.ddBtn:
-                Toast.makeText(getContext(), "DDev button", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Daily Dev button", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.infoBtn:
                 Toast.makeText(getContext(), "Info button", Toast.LENGTH_SHORT).show();

@@ -6,10 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.rgrg.dailydevotion.controller.BookMenuFrag;
+import com.rgrg.dailydevotion.controller.CalendarViewFrag;
 import com.rgrg.dailydevotion.controller.ChapterListFrag;
 import com.rgrg.dailydevotion.controller.ChapterViewFrag;
+import com.rgrg.dailydevotion.controller.JournalFrag;
 import com.rgrg.dailydevotion.controller.LoadingScreenFrag;
 import com.rgrg.dailydevotion.controller.MainMenuFrag;
+import com.rgrg.dailydevotion.controller.MonthListFrag;
 import com.rgrg.dailydevotion.controller.TestamentFrag;
 import com.rgrg.dailydevotion.database.DatabaseHelper;
 
@@ -50,6 +53,18 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case "ChapterViewFrag":
                 getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, ChapterListFrag.main(ChapterViewFrag.B_CHAPTERS, ChapterViewFrag.TYPE,  ChapterViewFrag.BOOKNAME), "ChapterListFrag").commit();
+                break;
+            case "InstructionFrag":
+                getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, new MainMenuFrag(), "MainMenuFrag").commit();
+                break;
+            case "MonthListFrag":
+                getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, new MainMenuFrag(), "MainMenuFrag").commit();
+                break;
+            case "CalendarViewFrag":
+                getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, new MonthListFrag(), "MonthListFrag").commit();
+                break;
+            case "JournalFrag":
+                getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, CalendarViewFrag.main(JournalFrag.MONTH), "CalendarViewFrag").commit();
                 break;
         }
     }

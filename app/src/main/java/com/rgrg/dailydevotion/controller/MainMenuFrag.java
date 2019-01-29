@@ -66,10 +66,10 @@ public class MainMenuFrag extends Fragment implements View.OnClickListener{
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, new TestamentFrag(), "TestamentFrag").commit();
                 break;
             case R.id.ddBtn:
-                Toast.makeText(getContext(), "Daily Dev button", Toast.LENGTH_SHORT).show();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, new MonthListFrag(), "MonthListFrag").commit();
                 break;
             case R.id.infoBtn:
-                Toast.makeText(getContext(), "Info button", Toast.LENGTH_SHORT).show();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, new InstructionFrag(), "InstructionFrag").commit();
                 break;
         }
     }

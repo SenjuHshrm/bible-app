@@ -45,7 +45,7 @@ public class LoadingScreenFrag extends Fragment {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, new MainMenuFrag(), "MainMenuFrag").commit();
             }
         }, 3000);
     }

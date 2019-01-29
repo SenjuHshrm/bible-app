@@ -4,6 +4,8 @@
     <string name="lblBtnDevotion">Devotion</string>
     <string name="lblBtnBible">Bible</string>
     <string name="lblBtnInst">Instruction</string>
+    <string name="lblOld">Old Testament</string>
+    <string name="lblNew">New Testament</string>
     <string name="lblInstTitle">SOAP Bible Study Plan</string>
     <string name="scriptureDesc">\tTake today\'s Bible reading, pray over it and then read through slowly. God will
     direct your attention to certain verses or sections. Write these down in your

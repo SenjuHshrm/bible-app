@@ -23,8 +23,8 @@ import java.util.Map;
  */
 public class BookMenuFrag extends Fragment {
 
-    private static final String[] oldBook = {"Genesis","Exodus","Leviticus","Numbers"};
-    private static final String[] oldChp = {"50","40","27","36"};
+    private static final String[] oldBook = {"Genesis","Exodus","Leviticus","Numbers","Deuteronomy"};
+    private static final String[] oldChp = {"50","40","27","36","20"};
     private static final String[] newBook = {"Matthew"};
     private static final String[] newChp = {"28"};
     private String arg;

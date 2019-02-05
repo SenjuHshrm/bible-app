@@ -1,5 +1,8 @@
 package com.rgrg.dailydevotion;
 
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
+import android.content.ComponentName;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -15,9 +18,13 @@ import com.rgrg.dailydevotion.controller.MainMenuFrag;
 import com.rgrg.dailydevotion.controller.MonthListFrag;
 import com.rgrg.dailydevotion.controller.TestamentFrag;
 import com.rgrg.dailydevotion.database.DatabaseHelper;
+import com.rgrg.dailydevotion.notification.NotifyUser;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
-
+    private JobScheduler mSched;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +35,49 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        schedJobM();
+        schedJobE();
         getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, new LoadingScreenFrag(), "LoadingScreenFrag").commit();
+    }
+
+    private void schedJobM() {
+        String timeStr = "06:00 am";
+        long timeInMilli = 0;
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm aaa");
+        try{
+            Date mDate = sdf.parse(timeStr);
+            timeInMilli = mDate.getTime();
+            mSched = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
+            ComponentName serviceName = new ComponentName(getPackageName(), NotifyUser.class.getName());
+            JobInfo.Builder build = new JobInfo.Builder(0, serviceName)
+                    .setPeriodic(timeInMilli);
+            JobInfo jInfo = build.build();
+            mSched.schedule(jInfo);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void schedJobE() {
+        String timeStr = "06:00 pm";
+        long timeInMilli = 0;
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm aaa");
+        try{
+            Date mDate = sdf.parse(timeStr);
+            timeInMilli = mDate.getTime();
+            mSched = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
+            ComponentName serviceName = new ComponentName(getPackageName(), NotifyUser.class.getName());
+            JobInfo.Builder build = new JobInfo.Builder(0, serviceName)
+                    .setPeriodic(timeInMilli);
+            JobInfo jInfo = build.build();
+            mSched.schedule(jInfo);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override

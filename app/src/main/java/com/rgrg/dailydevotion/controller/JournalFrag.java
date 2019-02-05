@@ -63,8 +63,8 @@ public class JournalFrag extends Fragment{
         String curDate = MONTH + " " + DAY + ", " + YEAR;
         cdate.setText(curDate);
         String TitleLbl = getTime();
-
-        bverse.setText(getBibleVerse());
+        String BVerse = getBibleVerse();
+        bverse.setText(BVerse);
         bverse.setOnClickListener(onVerseClick());
         inS = (TextView) view.findViewById(R.id.inScripture);
         inO = (TextView) view.findViewById(R.id.inObserve);

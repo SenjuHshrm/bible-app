@@ -114,6 +114,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         while(req.moveToNext()){
             str.append(req.getString(0));
         }
+        req.close();
         return str.toString();
     }
 
@@ -124,6 +125,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         while(req.moveToNext()){
             str.append(req.getString(0));
         }
+        req.close();
         return str.toString();
     }
 

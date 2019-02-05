@@ -49,10 +49,8 @@ public class ChapterListFrag extends Fragment implements View.OnClickListener{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_chapter_list, container, false);
         TextView BookName = (TextView) view.findViewById(R.id.BookNameChpList);
-        TextView TestType = (TextView) view.findViewById(R.id.testamentType);
         gl = (GridLayout) view.findViewById(R.id.ChaptersList);
         BookName.setText(getArguments().getString("BOOK"));
-        TestType.setText(T_PART);
 
         BuildChapterList(getArguments().getInt("CHAPTER"));
         return view;

@@ -1,8 +1,8 @@
 package com.rgrg.dailydevotion;
 
-import android.app.job.JobInfo;
-import android.app.job.JobScheduler;
-import android.content.ComponentName;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -18,13 +18,11 @@ import com.rgrg.dailydevotion.controller.MainMenuFrag;
 import com.rgrg.dailydevotion.controller.MonthListFrag;
 import com.rgrg.dailydevotion.controller.TestamentFrag;
 import com.rgrg.dailydevotion.database.DatabaseHelper;
-import com.rgrg.dailydevotion.notification.NotifyUser;
+import com.rgrg.dailydevotion.notification.NotifReceiver;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
-    private JobScheduler mSched;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,43 +39,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void schedJobM() {
-        String timeStr = "06:00 am";
-        long timeInMilli = 0;
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm aaa");
-        try{
-            Date mDate = sdf.parse(timeStr);
-            timeInMilli = mDate.getTime();
-            mSched = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
-            ComponentName serviceName = new ComponentName(getPackageName(), NotifyUser.class.getName());
-            JobInfo.Builder build = new JobInfo.Builder(0, serviceName)
-                    .setPeriodic(timeInMilli);
-            JobInfo jInfo = build.build();
-            mSched.schedule(jInfo);
+        Calendar Mrn = Calendar.getInstance();
+        Mrn.set(Calendar.HOUR_OF_DAY, 6);
+        Mrn.set(Calendar.MINUTE, 0);
+        Mrn.set(Calendar.SECOND, 5);
+        Mrn.set(Calendar.MILLISECOND, 0);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+        Intent intent =  new Intent(getApplicationContext(), NotifReceiver.class);
+        PendingIntent pIntent = PendingIntent.getBroadcast(
+                getApplicationContext(), 1010, intent, PendingIntent.FLAG_UPDATE_CURRENT
+        );
+        AlarmManager alMn = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alMn.setRepeating(AlarmManager.RTC_WAKEUP, Mrn.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pIntent);
     }
 
     private void schedJobE() {
-        String timeStr = "06:00 pm";
-        long timeInMilli = 0;
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm aaa");
-        try{
-            Date mDate = sdf.parse(timeStr);
-            timeInMilli = mDate.getTime();
-            mSched = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
-            ComponentName serviceName = new ComponentName(getPackageName(), NotifyUser.class.getName());
-            JobInfo.Builder build = new JobInfo.Builder(0, serviceName)
-                    .setPeriodic(timeInMilli);
-            JobInfo jInfo = build.build();
-            mSched.schedule(jInfo);
+        Calendar Mrn = Calendar.getInstance();
+        Mrn.set(Calendar.HOUR_OF_DAY, 18);
+        Mrn.set(Calendar.MINUTE, 0);
+        Mrn.set(Calendar.SECOND, 5);
+        Mrn.set(Calendar.MILLISECOND, 0);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+        Intent intent =  new Intent(getApplicationContext(), NotifReceiver.class);
+        PendingIntent pIntent = PendingIntent.getBroadcast(
+                getApplicationContext(), 1010, intent, PendingIntent.FLAG_UPDATE_CURRENT
+        );
+        AlarmManager alMn = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alMn.setRepeating(AlarmManager.RTC_WAKEUP, Mrn.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pIntent);
     }
 
     @Override

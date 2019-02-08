@@ -1,10 +1,12 @@
 package com.rgrg.dailydevotion.controller;
 
 
+import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,10 +56,13 @@ public class CalendarViewFrag extends Fragment implements View.OnClickListener{
     }
 
     private void buildCalendar(String reqMonth){
+        Display disp = getActivity().getWindowManager().getDefaultDisplay();
+        Point p = new Point();
+        disp.getSize(p);
         Drawable notYet = ContextCompat.getDrawable(getContext(), R.drawable.btn_not_yet);
         int CurrMon = Calendar.getInstance().get(Calendar.MONTH);
         int days = daysInMn(MONTH_NAME, Calendar.getInstance().get(Calendar.YEAR));
-        int column = 5, row = days / column;
+        int column = 5, row = days / column, btnWidth = p.x / column;
         String CurrDate = GetMonthString(CurrMon) + " " + Integer.toString(Calendar.getInstance().get(Calendar.DATE)) + ", " + Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
         gl.setColumnCount(column);
         gl.removeAllViews();
@@ -89,7 +94,7 @@ public class CalendarViewFrag extends Fragment implements View.OnClickListener{
             btn.setOnClickListener(this);
             btn.setEnabled(btnEnable);
             btn.setBackground(btnColor);
-            btn.setLayoutParams(new ViewGroup.LayoutParams(100,100));
+            btn.setLayoutParams(new ViewGroup.LayoutParams(btnWidth,100));
             btn.setTextSize(18);
             gl.addView(btn);
         }
@@ -219,9 +224,11 @@ public class CalendarViewFrag extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
+        Button btn = (Button)view;
+        String d = btn.getText().toString();
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frag_con,
-                        JournalFrag.main(MONTH_NAME, Integer.toString(Calendar.getInstance().get(Calendar.DATE)), Integer.toString(Calendar.getInstance().get(Calendar.YEAR))),
+                        JournalFrag.main(MONTH_NAME, d, Integer.toString(Calendar.getInstance().get(Calendar.YEAR))),
                         "JournalFrag").commit();
     }
 }

@@ -63,8 +63,9 @@ public class JournalFrag extends Fragment{
         String curDate = MONTH + " " + DAY + ", " + YEAR;
         cdate.setText(curDate);
         String TitleLbl = getTime();
-
-        bverse.setText(getBibleVerse());
+        String BVerse = getBibleVerse();
+        bverse.setText(BVerse);
+        bverse.setOnClickListener(onVerseClick());
         inS = (TextView) view.findViewById(R.id.inScripture);
         inO = (TextView) view.findViewById(R.id.inObserve);
         inA = (TextView) view.findViewById(R.id.inApply);
@@ -194,6 +195,17 @@ public class JournalFrag extends Fragment{
                         }
                         break;
                 }
+            }
+        };
+    }
+
+    private View.OnClickListener onVerseClick() {
+        final String verse = getBibleVerse();
+        return new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                String[] str = verse.split(" ");
+                //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, ).commit();
             }
         };
     }

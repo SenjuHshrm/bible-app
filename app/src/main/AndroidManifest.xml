@@ -31,6 +31,7 @@
         android:name=".notification.NotifyUser"
         android:permission="android.permission.BIND_JOB_SERVICE"
         />
-</application>
+        <service android:name=".notification.AppService" />
+    </application>
 
 </manifest>

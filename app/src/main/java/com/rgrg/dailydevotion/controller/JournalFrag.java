@@ -1,12 +1,8 @@
 package com.rgrg.dailydevotion.controller;
 
 
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
-import android.icu.lang.UCharacter;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,10 +15,6 @@ import android.widget.Toast;
 import com.rgrg.dailydevotion.R;
 import com.rgrg.dailydevotion.database.DatabaseHelper;
 
-import org.w3c.dom.Text;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
@@ -204,8 +196,7 @@ public class JournalFrag extends Fragment{
         return new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                String[] str = verse.split(" ");
-                //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, ).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, ViewDailyVerseFrag.main(MONTH, DAY, YEAR, verse), "ViewDailyVerseFrag").commit();
             }
         };
     }
@@ -291,7 +282,7 @@ public class JournalFrag extends Fragment{
         inP = (TextView) getActivity().findViewById(R.id.inPrayer);
         btnSave = (Button) getActivity().findViewById(R.id.btnSave);
         btnUpdate = (Button) getActivity().findViewById(R.id.btnUpdate);
-        btnDel = (Button) view.findViewById(R.id.btnDelete);
+        btnDel = (Button) getActivity().findViewById(R.id.btnDelete);
         String[] req = new String[5];
         req[0] = inS.getText().toString();
         req[1] = inO.getText().toString();

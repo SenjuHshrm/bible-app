@@ -15,6 +15,7 @@ import com.rgrg.dailydevotion.controller.LoadingScreenFrag;
 import com.rgrg.dailydevotion.controller.MainMenuFrag;
 import com.rgrg.dailydevotion.controller.MonthListFrag;
 import com.rgrg.dailydevotion.controller.TestamentFrag;
+import com.rgrg.dailydevotion.controller.ViewDailyVerseFrag;
 import com.rgrg.dailydevotion.database.DatabaseHelper;
 import com.rgrg.dailydevotion.notification.AppService;
 
@@ -68,6 +69,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case "JournalFrag":
                 getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, CalendarViewFrag.main(JournalFrag.MONTH), "CalendarViewFrag").commit();
+                break;
+            case "ViewDailyVerseFrag":
+                String mnt = ViewDailyVerseFrag.MONTH,
+                        day = ViewDailyVerseFrag.DAY,
+                        yr = ViewDailyVerseFrag.YEAR;
+                getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, JournalFrag.main(mnt, day, yr), "JournalFrag").commit();
                 break;
         }
     }

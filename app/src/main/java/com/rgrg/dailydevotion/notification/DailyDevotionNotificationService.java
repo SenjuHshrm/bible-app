@@ -12,9 +12,9 @@ import com.rgrg.dailydevotion.MainActivity;
 
 import java.util.Calendar;
 
-public class AppService extends Service {
+public class DailyDevotionNotificationService extends Service {
 
-    public AppService() {
+    public DailyDevotionNotificationService() {
 
     }
 

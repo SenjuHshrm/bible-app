@@ -94,7 +94,7 @@ public class CalendarViewFrag extends Fragment implements View.OnClickListener{
             btn.setOnClickListener(this);
             btn.setEnabled(btnEnable);
             btn.setBackground(btnColor);
-            btn.setLayoutParams(new ViewGroup.LayoutParams(btnWidth,100));
+            btn.setLayoutParams(new ViewGroup.LayoutParams(btnWidth, ViewGroup.LayoutParams.WRAP_CONTENT));
             btn.setTextSize(18);
             gl.addView(btn);
         }

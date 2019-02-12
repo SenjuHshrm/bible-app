@@ -16,7 +16,7 @@ import com.rgrg.dailydevotion.controller.MainMenuFrag;
 import com.rgrg.dailydevotion.controller.MonthListFrag;
 import com.rgrg.dailydevotion.controller.TestamentFrag;
 import com.rgrg.dailydevotion.database.DatabaseHelper;
-import com.rgrg.dailydevotion.notification.AppService;
+import com.rgrg.dailydevotion.notification.DailyDevotionNotificationService;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Intent intent = new Intent(this, AppService.class);
+        Intent intent = new Intent(this, DailyDevotionNotificationService.class);
         startService(intent);
         getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, new LoadingScreenFrag(), "LoadingScreenFrag").commit();
     }

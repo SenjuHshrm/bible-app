@@ -11,4 +11,5 @@
     <color name="workToday">#e6ff97</color>
     <color name="bgTransparent">#00FFFFFF</color>
     <color name="bgTransparent2">#90FFFFFF</color>
+    <color name="bgInput">#f2f2f2</color>
 </resources>

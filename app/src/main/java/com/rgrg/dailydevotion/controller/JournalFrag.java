@@ -206,7 +206,11 @@ public class JournalFrag extends Fragment{
         return new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.frag_con, VerseViewFrag.main(MONTH,DAY,YEAR,verse), "VerseViewFrag")
+                        .commit();
             }
         };
     }

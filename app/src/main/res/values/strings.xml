@@ -9,6 +9,7 @@
     <string name="lblMDev">Morning Devotion</string>
     <string name="lblEDev">Evening Devotion</string>
     <string name="lblInstTitle">SOAP Bible Study Plan</string>
+    <string name="lblLoading">Loading, Please wait...</string>
     <string name="scriptureDesc">\tTake today\'s Bible reading, pray over it and then read through slowly. God will
     direct your attention to certain verses or sections. Write these down in your
     journal and focus your study there.</string>

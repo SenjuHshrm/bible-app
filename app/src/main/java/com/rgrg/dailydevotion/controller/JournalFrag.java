@@ -1,28 +1,24 @@
 package com.rgrg.dailydevotion.controller;
 
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.icu.lang.UCharacter;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rgrg.dailydevotion.R;
 import com.rgrg.dailydevotion.database.DatabaseHelper;
 
-import org.w3c.dom.Text;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
@@ -138,6 +134,12 @@ public class JournalFrag extends Fragment{
         EditText edt = (EditText) dialog.findViewById(R.id.editor_input);
         edt.setText(str);
         dialog.show();
+        try {
+            Window wndw = dialog.getWindow();
+            wndw.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private View.OnClickListener onTextViewClick() {
@@ -204,8 +206,7 @@ public class JournalFrag extends Fragment{
         return new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                String[] str = verse.split(" ");
-                //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, ).commit();
+
             }
         };
     }
@@ -291,7 +292,7 @@ public class JournalFrag extends Fragment{
         inP = (TextView) getActivity().findViewById(R.id.inPrayer);
         btnSave = (Button) getActivity().findViewById(R.id.btnSave);
         btnUpdate = (Button) getActivity().findViewById(R.id.btnUpdate);
-        btnDel = (Button) view.findViewById(R.id.btnDelete);
+        btnDel = (Button) getActivity().findViewById(R.id.btnDelete);
         String[] req = new String[5];
         req[0] = inS.getText().toString();
         req[1] = inO.getText().toString();
@@ -309,114 +310,161 @@ public class JournalFrag extends Fragment{
     }
 
     private void UpdateSOAPM(View view) {
-        DatabaseHelper dbHelp = new DatabaseHelper(getContext());
-        cdate = (TextView) getActivity().findViewById(R.id.curr_date);
-        inS = (TextView) getActivity().findViewById(R.id.inScripture);
-        inO = (TextView) getActivity().findViewById(R.id.inObserve);
-        inA = (TextView) getActivity().findViewById(R.id.inApply);
-        inP = (TextView) getActivity().findViewById(R.id.inPrayer);
-        btnSave = (Button) getActivity().findViewById(R.id.btnSave);
-        btnUpdate = (Button) getActivity().findViewById(R.id.btnUpdate);
-        btnDel = (Button) getActivity().findViewById(R.id.btnDelete);
-        String[] req = new String[5];
-        req[0] = inS.getText().toString();
-        req[1] = inO.getText().toString();
-        req[2] = inA.getText().toString();
-        req[3] = inP.getText().toString();
-        req[4] = cdate.getText().toString();
-        if(dbHelp.updateSOAPMorning(req)) {
-            Toast.makeText(getContext(), "Saved.", Toast.LENGTH_SHORT).show();
-            btnSave.setEnabled(false);
-            btnUpdate.setEnabled(true);
-            btnDel.setEnabled(true);
-        } else {
-            Toast.makeText(getContext(), "Not saved.", Toast.LENGTH_SHORT).show();
-        }
+        final DatabaseHelper dbHelp = new DatabaseHelper(getContext());
+        final TextView ucdate = (TextView) getActivity().findViewById(R.id.curr_date);
+        final TextView uinS = (TextView) getActivity().findViewById(R.id.inScripture);
+        final TextView uinO = (TextView) getActivity().findViewById(R.id.inObserve);
+        final TextView uinA = (TextView) getActivity().findViewById(R.id.inApply);
+        final TextView uinP = (TextView) getActivity().findViewById(R.id.inPrayer);
+        final TextView ubtnSave = (Button) getActivity().findViewById(R.id.btnSave);
+        final TextView ubtnUpdate = (Button) getActivity().findViewById(R.id.btnUpdate);
+        final TextView ubtnDel = (Button) getActivity().findViewById(R.id.btnDelete);
+        final String[] req = new String[5];
+        req[0] = uinS.getText().toString();
+        req[1] = uinO.getText().toString();
+        req[2] = uinA.getText().toString();
+        req[3] = uinP.getText().toString();
+        req[4] = ucdate.getText().toString();
+        AlertDialog.Builder upd = new AlertDialog.Builder(getActivity());
+        upd.setCancelable(true)
+                .setMessage("Do you want to save changes?")
+                .setPositiveButton("Yes", new AlertDialog.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if(dbHelp.updateSOAPMorning(req)) {
+                            Toast.makeText(getContext(), "Saved.", Toast.LENGTH_SHORT).show();
+                            ubtnSave.setEnabled(false);
+                            ubtnUpdate.setEnabled(true);
+                            ubtnDel.setEnabled(true);
+                        } else {
+                            Toast.makeText(getContext(), "Not saved.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .setNegativeButton("No", null);
+        AlertDialog b = upd.create();
+        b.show();
+
     }
 
     private void UpdateSOAPE(View view) {
-        DatabaseHelper dbHelp = new DatabaseHelper(getContext());
-        cdate = (TextView) getActivity().findViewById(R.id.curr_date);
-        inS = (TextView) getActivity().findViewById(R.id.inScripture);
-        inO = (TextView) getActivity().findViewById(R.id.inObserve);
-        inA = (TextView) getActivity().findViewById(R.id.inApply);
-        inP = (TextView) getActivity().findViewById(R.id.inPrayer);
-        btnSave = (Button) getActivity().findViewById(R.id.btnSave);
-        btnUpdate = (Button) getActivity().findViewById(R.id.btnUpdate);
-        btnDel = (Button) getActivity().findViewById(R.id.btnDelete);
-        String[] req = new String[5];
+        final DatabaseHelper dbHelp = new DatabaseHelper(getContext());
+        final TextView ucdate = (TextView) getActivity().findViewById(R.id.curr_date);
+        final TextView uinS = (TextView) getActivity().findViewById(R.id.inScripture);
+        final TextView uinO = (TextView) getActivity().findViewById(R.id.inObserve);
+        final TextView uinA = (TextView) getActivity().findViewById(R.id.inApply);
+        final TextView uinP = (TextView) getActivity().findViewById(R.id.inPrayer);
+        final TextView ubtnSave = (Button) getActivity().findViewById(R.id.btnSave);
+        final TextView ubtnUpdate = (Button) getActivity().findViewById(R.id.btnUpdate);
+        final TextView ubtnDel = (Button) getActivity().findViewById(R.id.btnDelete);
+        final String[] req = new String[5];
         req[0] = inS.getText().toString();
         req[1] = inO.getText().toString();
         req[2] = inA.getText().toString();
         req[3] = inP.getText().toString();
         req[4] = cdate.getText().toString();
-        if(dbHelp.updateSOAPEvening(req)) {
-            Toast.makeText(getContext(), "Updated.", Toast.LENGTH_SHORT).show();
-            btnSave.setEnabled(false);
-            btnUpdate.setEnabled(true);
-            btnDel.setEnabled(true);
-        } else {
-            Toast.makeText(getContext(), "Not updated.", Toast.LENGTH_SHORT).show();
-        }
+        AlertDialog.Builder upd = new AlertDialog.Builder(getActivity());
+        upd.setCancelable(true)
+                .setMessage("Do you want to save changes?")
+                .setPositiveButton("Yes", new AlertDialog.OnClickListener(){
+
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if(dbHelp.updateSOAPEvening(req)) {
+                            Toast.makeText(getContext(), "Updated.", Toast.LENGTH_SHORT).show();
+                            btnSave.setEnabled(false);
+                            btnUpdate.setEnabled(true);
+                            btnDel.setEnabled(true);
+                        } else {
+                            Toast.makeText(getContext(), "Not updated.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .setNegativeButton("No", null);
+        AlertDialog d = upd.create();
+        d.show();
     }
 
     private void DelSOAPM(View view) {
-        DatabaseHelper dbHelp = new DatabaseHelper(getContext());
-        cdate = (TextView) getActivity().findViewById(R.id.curr_date);
-        inS = (TextView) getActivity().findViewById(R.id.inScripture);
-        inO = (TextView) getActivity().findViewById(R.id.inObserve);
-        inA = (TextView) getActivity().findViewById(R.id.inApply);
-        inP = (TextView) getActivity().findViewById(R.id.inPrayer);
-        btnSave = (Button) getActivity().findViewById(R.id.btnSave);
-        btnUpdate = (Button) getActivity().findViewById(R.id.btnUpdate);
-        btnDel = (Button) getActivity().findViewById(R.id.btnDelete);
-        String[] req = new String[5];
-        req[0] = inS.getText().toString();
-        req[1] = inO.getText().toString();
-        req[2] = inA.getText().toString();
-        req[3] = inP.getText().toString();
-        req[4] = cdate.getText().toString();
-        if(dbHelp.deleteSOAPMorning(req)) {
-            Toast.makeText(getContext(), "Deleted.", Toast.LENGTH_SHORT).show();
-            btnSave.setEnabled(true);
-            btnUpdate.setEnabled(false);
-            btnDel.setEnabled(false);
-            inS.setText(" ");
-            inO.setText(" ");
-            inA.setText(" ");
-            inP.setText(" ");
-        } else {
-            Toast.makeText(getContext(), "Not deleted.", Toast.LENGTH_SHORT).show();
-        }
+        final DatabaseHelper dbHelp = new DatabaseHelper(getContext());
+        final TextView dcdate = (TextView) getActivity().findViewById(R.id.curr_date);
+        final TextView dinS = (TextView) getActivity().findViewById(R.id.inScripture);
+        final TextView dinO = (TextView) getActivity().findViewById(R.id.inObserve);
+        final TextView dinA = (TextView) getActivity().findViewById(R.id.inApply);
+        final TextView dinP = (TextView) getActivity().findViewById(R.id.inPrayer);
+        final Button dbtnSave = (Button) getActivity().findViewById(R.id.btnSave);
+        final Button dbtnUpdate = (Button) getActivity().findViewById(R.id.btnUpdate);
+        final Button dbtnDel = (Button) getActivity().findViewById(R.id.btnDelete);
+        final String[] req = new String[5];
+        req[0] = dinS.getText().toString();
+        req[1] = dinO.getText().toString();
+        req[2] = dinA.getText().toString();
+        req[3] = dinP.getText().toString();
+        req[4] = dcdate.getText().toString();
+        AlertDialog.Builder build = new AlertDialog.Builder(getActivity());
+        build.setCancelable(true)
+                .setMessage("Do you want to delete current journal?")
+                .setPositiveButton("Yes", new AlertDialog.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if(dbHelp.deleteSOAPMorning(req)) {
+                            Toast.makeText(getActivity(), "Deleted.", Toast.LENGTH_SHORT).show();
+                            dbtnSave.setEnabled(true);
+                            dbtnUpdate.setEnabled(false);
+                            dbtnDel.setEnabled(false);
+                            dinS.setText(" ");
+                            dinO.setText(" ");
+                            dinA.setText(" ");
+                            dinP.setText(" ");
+                        } else {
+                            Toast.makeText(getContext(), "Not deleted.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .setNegativeButton("No", null);
+        AlertDialog b = build.create();
+        b.show();
+
     }
 
     private void DelSOAPE(View view) {
-        DatabaseHelper dbHelp = new DatabaseHelper(getContext());
-        cdate = (TextView) getActivity().findViewById(R.id.curr_date);
-        inS = (TextView) getActivity().findViewById(R.id.inScripture);
-        inO = (TextView) getActivity().findViewById(R.id.inObserve);
-        inA = (TextView) getActivity().findViewById(R.id.inApply);
-        inP = (TextView) getActivity().findViewById(R.id.inPrayer);
-        btnSave = (Button) getActivity().findViewById(R.id.btnSave);
-        btnUpdate = (Button) getActivity().findViewById(R.id.btnUpdate);
-        btnDel = (Button) getActivity().findViewById(R.id.btnDelete);
-        String[] req = new String[5];
-        req[0] = inS.getText().toString();
-        req[1] = inO.getText().toString();
-        req[2] = inA.getText().toString();
-        req[3] = inP.getText().toString();
-        req[4] = cdate.getText().toString();
-        if(dbHelp.deleteSOAPEvening(req)) {
-            Toast.makeText(getContext(), "Deleted.", Toast.LENGTH_SHORT).show();
-            btnSave.setEnabled(true);
-            btnUpdate.setEnabled(false);
-            btnDel.setEnabled(false);
-            inS.setText(" ");
-            inO.setText(" ");
-            inA.setText(" ");
-            inP.setText(" ");
-        } else {
-            Toast.makeText(getContext(), "Not deleted.", Toast.LENGTH_SHORT).show();
-        }
+        final DatabaseHelper dbHelp = new DatabaseHelper(getContext());
+        final TextView dcdate = (TextView) getActivity().findViewById(R.id.curr_date);
+        final TextView dinS = (TextView) getActivity().findViewById(R.id.inScripture);
+        final TextView dinO = (TextView) getActivity().findViewById(R.id.inObserve);
+        final TextView dinA = (TextView) getActivity().findViewById(R.id.inApply);
+        final TextView dinP = (TextView) getActivity().findViewById(R.id.inPrayer);
+        final Button dbtnSave = (Button) getActivity().findViewById(R.id.btnSave);
+        final Button dbtnUpdate = (Button) getActivity().findViewById(R.id.btnUpdate);
+        final Button dbtnDel = (Button) getActivity().findViewById(R.id.btnDelete);
+        final String[] req = new String[5];
+        req[0] = dinS.getText().toString();
+        req[1] = dinO.getText().toString();
+        req[2] = dinA.getText().toString();
+        req[3] = dinP.getText().toString();
+        req[4] = dcdate.getText().toString();
+        AlertDialog.Builder build = new AlertDialog.Builder(getActivity());
+        build.setCancelable(true)
+                .setMessage("Do you want to delete current journal?")
+                .setPositiveButton("Yes", new AlertDialog.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if(dbHelp.deleteSOAPEvening(req)) {
+                            Toast.makeText(getActivity(), "Deleted.", Toast.LENGTH_SHORT).show();
+                            dbtnSave.setEnabled(true);
+                            dbtnUpdate.setEnabled(false);
+                            dbtnDel.setEnabled(false);
+                            dinS.setText(" ");
+                            dinO.setText(" ");
+                            dinA.setText(" ");
+                            dinP.setText(" ");
+                        } else {
+                            Toast.makeText(getContext(), "Not deleted.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .setNegativeButton("No", null);
+        AlertDialog b = build.create();
+        b.show();
     }
 }

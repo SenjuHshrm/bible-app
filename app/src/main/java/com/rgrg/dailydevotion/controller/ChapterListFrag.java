@@ -1,10 +1,14 @@
 package com.rgrg.dailydevotion.controller;
 
 
+import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,18 +49,20 @@ public class ChapterListFrag extends Fragment implements View.OnClickListener{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_chapter_list, container, false);
         TextView BookName = (TextView) view.findViewById(R.id.BookNameChpList);
-        TextView TestType = (TextView) view.findViewById(R.id.testamentType);
         gl = (GridLayout) view.findViewById(R.id.ChaptersList);
         BookName.setText(getArguments().getString("BOOK"));
-        TestType.setText(T_PART);
 
         BuildChapterList(getArguments().getInt("CHAPTER"));
         return view;
     }
 
     private void BuildChapterList(int chpt) {
+        Display disp = getActivity().getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        disp.getSize(size);
         int row = (chpt / 5) + (chpt % 5);
-        int btnWidth = gl.getWidth() / 5;
+        int btnWidth = size.x / 5;
+        Log.e("GridLayout Width", Float.toString(btnWidth));
         gl.setColumnCount(5);
         gl.removeAllViews();
         gl.setRowCount(row);
@@ -67,7 +73,7 @@ public class ChapterListFrag extends Fragment implements View.OnClickListener{
             btn.setTextColor(ContextCompat.getColor(getContext(), R.color.colorBg));
             btn.setTypeface(btn.getTypeface(), Typeface.BOLD);
             btn.setTextSize(20);
-            btn.setLayoutParams(new ViewGroup.LayoutParams(100,100));
+            btn.setLayoutParams(new ViewGroup.LayoutParams(btnWidth, ViewGroup.LayoutParams.WRAP_CONTENT));
             btn.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.btn_chapter_bg));
             btn.setOnClickListener(this);
             gl.addView(btn);

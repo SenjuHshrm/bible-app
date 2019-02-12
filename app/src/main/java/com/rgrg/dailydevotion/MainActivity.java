@@ -1,23 +1,15 @@
 package com.rgrg.dailydevotion;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
-import com.rgrg.dailydevotion.controller.BookMenuFrag;
-import com.rgrg.dailydevotion.controller.CalendarViewFrag;
-import com.rgrg.dailydevotion.controller.ChapterListFrag;
-import com.rgrg.dailydevotion.controller.ChapterViewFrag;
-import com.rgrg.dailydevotion.controller.JournalFrag;
-import com.rgrg.dailydevotion.controller.LoadingScreenFrag;
-import com.rgrg.dailydevotion.controller.MainMenuFrag;
-import com.rgrg.dailydevotion.controller.MonthListFrag;
-import com.rgrg.dailydevotion.controller.TestamentFrag;
+import com.rgrg.dailydevotion.controller.*;
 import com.rgrg.dailydevotion.database.DatabaseHelper;
+import com.rgrg.dailydevotion.notification.DailyDevotionNotificationService;
 
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        Intent intent = new Intent(this, DailyDevotionNotificationService.class);
+        startService(intent);
         getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, new LoadingScreenFrag(), "LoadingScreenFrag").commit();
     }
 
@@ -65,6 +59,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case "JournalFrag":
                 getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, CalendarViewFrag.main(JournalFrag.MONTH), "CalendarViewFrag").commit();
+                break;
+            case "VerseViewFrag":
+                String mnt = VerseViewFrag.MONTH,
+                        day = VerseViewFrag.DAY,
+                        yr = VerseViewFrag.YEAR;
+                getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, JournalFrag.main(mnt, day, yr), "JournalFrag").commit();
                 break;
         }
     }

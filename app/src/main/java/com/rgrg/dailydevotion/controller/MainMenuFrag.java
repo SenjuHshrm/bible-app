@@ -47,7 +47,7 @@ public class MainMenuFrag extends Fragment implements View.OnClickListener{
 
     private void loadBtn(View v) {
         try {
-            for(int x = 0; x < 4; x++) {
+            for(int x = 0; x < 3; x++) {
                 imgBtns[x] = (ImageButton) v.findViewById(ids[x]);
                 InputStream is = getActivity().getAssets().open(btnImg[x]);
                 Drawable d = Drawable.createFromStream(is, null);

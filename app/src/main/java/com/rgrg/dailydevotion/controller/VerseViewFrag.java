@@ -45,4 +45,5 @@ public class VerseViewFrag extends Fragment {
         return view;
     }
 
+
 }

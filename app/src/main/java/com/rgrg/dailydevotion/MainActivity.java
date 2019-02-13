@@ -1,13 +1,14 @@
 package com.rgrg.dailydevotion;
 
 import android.content.Intent;
+import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import com.rgrg.dailydevotion.controller.*;
 import com.rgrg.dailydevotion.database.DatabaseHelper;
-import com.rgrg.dailydevotion.notification.DailyDevotionNotificationService;
+import com.rgrg.dailydevotion.notification.*;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -21,7 +22,11 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         Intent intent = new Intent(this, DailyDevotionNotificationService.class);
-        startService(intent);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            startForegroundService(intent);
+        } else {
+            startService(intent);
+        }
         getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, new LoadingScreenFrag(), "LoadingScreenFrag").commit();
     }
 

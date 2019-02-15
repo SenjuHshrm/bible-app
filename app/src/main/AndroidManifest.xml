@@ -26,11 +26,12 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
+    <service android:name=".notification.DailyDevJobService"
+        android:enabled="true"/>
     <service android:name=".notification.DailyDevotionNotificationService"
-        android:enabled="true"
-        android:exported="true"/>
+        android:enabled="true" />
 
-    <receiver android:name=".notification.StartAppOnBoot"
+        <receiver android:name=".notification.StartAppOnBoot"
         android:enabled="true"
         android:exported="true">
         <intent-filter>

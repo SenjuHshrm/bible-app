@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
 
     <application
@@ -25,13 +26,17 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
-    <service android:name=".notification.DailyDevotionNotificationService" />
+    <service android:name=".notification.DailyDevotionNotificationService"
+        android:enabled="true"
+        android:exported="true"/>
 
-    <receiver android:name=".notification.StartAppOnBoot">
-    <intent-filter>
-        <action android:name="android.intent.action.BOOT_COMPLETED" />
-        <action android:name="android.intent.action.QUICKBOOT_POWERON" />
-    </intent-filter>
+    <receiver android:name=".notification.StartAppOnBoot"
+        android:enabled="true"
+        android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.BOOT_COMPLETED" />
+            <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+        </intent-filter>
     </receiver>
     </application>
 

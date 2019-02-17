@@ -49,18 +49,18 @@ public class VerseViewFrag extends Fragment {
         BIBLE_VERSE = getArguments().getString("BIBLE_VERSE");
         TextView vrsname = (TextView) view.findViewById(R.id.verse_name);
         vrsname.setText(BIBLE_VERSE);
-        splitStrVerse(BIBLE_VERSE);
+        splitStrVerse(BIBLE_VERSE, view);
         return view;
     }
 
-    private void splitStrVerse(String verse) {
+    private void splitStrVerse(String verse, View v) {
         if(!hasWhiteSpace(verse)){
-            getAllChapters(verse);
+            getAllChapters(verse, v);
         } else {
             if(!hasColon(verse)){
-                extractChapters(verse);
+                extractChapters(verse, v);
             } else {
-                extractVerses(verse);
+                extractVerses(verse, v);
             }
         }
     }
@@ -83,7 +83,7 @@ public class VerseViewFrag extends Fragment {
         return str.contains(":");
     }
 
-    private void getAllChapters(String str) {
+    private void getAllChapters(String str, View v) {
         try {
             StringBuilder wholeBook = new StringBuilder();
             AssetManager assetManager = getActivity().getAssets();
@@ -106,22 +106,100 @@ public class VerseViewFrag extends Fragment {
                 }
                 wholeBook.append(strBuilder.toString());
             }
-            TextView txtView = (TextView) getActivity().findViewById(R.id.chapter_cont);
+            TextView txtView = (TextView) v.findViewById(R.id.chapter_cont);
             txtView.setText(wholeBook.toString());
         } catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    private void extractChapters(String str) {
+    private void extractChapters(String str, View v) {
         String[] ex = str.split(" ");
         String bookName = setBookName(ex[0], ex[1]);
         String DIR = getTestament() + bookName + "/";
-
+        String[] chpt = chapterNums(ex);
+        StringBuilder strBuild = new StringBuilder();
+        for (String aChpt : chpt) {
+            try {
+                InputStream is = getActivity().getAssets().open(DIR + bookName + "_" + aChpt + ".txt");
+                BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    strBuild.append(line);
+                    strBuild.append("\n\n");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            strBuild.append("\n\n");
+        }
+        TextView txtView = v.findViewById(R.id.chapter_cont);
+        txtView.setText(strBuild.toString());
     }
 
-    private void extractVerses(String str) {
+    private void extractVerses(String str, View v) {
+        String[] ex = str.split(" ");
+        String bookName = setBookName(ex[0], ex[1]);
+        String DIR = getTestament() + bookName + "/";
+        String[] verseRange = extChars(ex);
+        int chpt = Integer.parseInt(verseRange[0]);
+        int startVrs = Integer.parseInt(verseRange[1]) - 1;
+        int endVrs = Integer.parseInt(verseRange[2]) - 1;
+        StringBuilder strBuild = new StringBuilder();
+        String file = DIR + bookName + "_" + Integer.toString(chpt) + ".txt";
+        String[] fileLineArr = fileToArray(file);
+        for(int i = 0; i < fileLineArr.length; i++){
+            if(i >= startVrs && i <= endVrs){
+                strBuild.append(fileLineArr[i]);
+                strBuild.append("\n\n");
+            }
+        }
+        TextView txtView = v.findViewById(R.id.chapter_cont);
+        txtView.setText(strBuild.toString());
+    }
 
+    private int countLine(String file) {
+        int cnt = 0;
+        try {
+            InputStream is = getActivity().getAssets().open(file);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+            while(reader.readLine() != null){
+                cnt++;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cnt;
+    }
+
+    private String[] fileToArray(String file){
+        String[] res = new String[countLine(file)];
+        try {
+            InputStream is = getActivity().getAssets().open(file);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+            String line;
+            int cnt = -1;
+            while((line = reader.readLine()) != null){
+                cnt++;
+                res[cnt] = line;
+                Log.e("Verse", line);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
+    private String[] extChars(String[] str) {
+        String verse = "";
+        for (String aStr : str) {
+            if (aStr.contains(":")) {
+                verse = aStr;
+            }
+        }
+        verse = verse.replace(":", " ");
+        verse = verse.replace("-", " ");
+        return verse.split(" ");
     }
 
     private String setBookName(String... str){
@@ -135,7 +213,19 @@ public class VerseViewFrag extends Fragment {
     }
 
     private String[] chapterNums(String[] str) {
-        return new String[1];
+        int startCnt;
+        if(checkBookCount(str[0])){
+            startCnt = 2;
+        } else {
+            startCnt = 1;
+        }
+        String[] chptrs  = new String[str.length];
+        for(int i = 0; i < str.length; i++){
+            if(i >= startCnt){
+                chptrs[i] = str[i];
+            }
+        }
+        return chptrs;
     }
 
     private boolean checkBookCount(String str) {

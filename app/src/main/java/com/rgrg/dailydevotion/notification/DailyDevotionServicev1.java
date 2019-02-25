@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 
 import com.rgrg.dailydevotion.MainActivity;
+import com.rgrg.dailydevotion.R;
 
 import java.util.Calendar;
 
@@ -65,7 +66,7 @@ public class DailyDevotionServicev1 extends Service {
                     .setContentIntent(pendingIntent)
                     .setContentTitle("Daily Devotion")
                     .setContentText(msg)
-                    .setSmallIcon(android.R.mipmap.sym_def_app_icon)
+                    .setSmallIcon(R.mipmap.ic_app_logo)
                     .setPriority(NotificationCompat.PRIORITY_HIGH)
                     .setDefaults(NotificationCompat.DEFAULT_ALL)
                     .setAutoCancel(true);

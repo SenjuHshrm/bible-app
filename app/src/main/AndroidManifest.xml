@@ -10,7 +10,7 @@
 
 
     <application
-    android:allowBackup="true"
+    android:name=".notification.DailyDevotion"
     android:icon="@mipmap/ic_launcher"
     android:label="@string/app_name"
     android:roundIcon="@mipmap/ic_launcher_round"
@@ -26,9 +26,9 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
-    <service android:name=".notification.DailyDevJobService"
+    <service android:name=".notification.DailyDevotionServicev2"
         android:enabled="true"/>
-    <service android:name=".notification.DailyDevotionNotificationService"
+    <service android:name=".notification.DailyDevotionServicev1"
         android:enabled="true" />
 
         <receiver android:name=".notification.StartAppOnBoot"

@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DailyDevotion.iml" filepath="$PROJECT_DIR$/DailyDevotion.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bible-app.iml" filepath="$PROJECT_DIR$/bible-app.iml" />
     </modules>
   </component>
 </project>

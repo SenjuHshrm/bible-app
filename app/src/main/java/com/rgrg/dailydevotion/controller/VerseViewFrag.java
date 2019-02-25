@@ -204,8 +204,10 @@ public class VerseViewFrag extends Fragment {
 
     private String setBookName(String... str){
         String res;
-        if(checkBookCount(str[0])){
+        if(checkBookCount(str[0])) {
             res = str[0] + "_" + str[1];
+        } else if(str[0].equalsIgnoreCase("Song")){
+            return "Song_Of_Solomon";
         } else {
             res = str[0];
         }

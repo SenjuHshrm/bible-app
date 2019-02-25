@@ -66,7 +66,7 @@ public class ChapterViewFrag extends Fragment {
                 testament = "New_Testament/";
                 break;
         }
-        String SpecBook =  "bible/" + testament + BOOKNAME + "/" + BOOKNAME + "_" + String.valueOf(B_SPCHP) + ".txt";
+        String SpecBook =  "bible/" + testament + repSpace(BOOKNAME )+ "/" + repSpace(BOOKNAME) + "_" + String.valueOf(B_SPCHP) + ".txt";
         try {
             InputStream is = getActivity().getAssets().open(SpecBook);
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -79,6 +79,13 @@ public class ChapterViewFrag extends Fragment {
             e.printStackTrace();
         }
         txtView.setText(txt.toString());
+    }
+
+    private String repSpace(String str){
+        if(str.contains(" ")){
+            return str.replace(" ","_");
+        }
+        return str;
     }
 
 }

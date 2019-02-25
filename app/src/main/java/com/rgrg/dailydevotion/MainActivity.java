@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import com.rgrg.dailydevotion.controller.*;
@@ -21,13 +22,14 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Intent intent_O = new Intent(this, DailyDevJobService.class);
-        Intent intent_low = new Intent(this, DailyDevotionNotificationService.class);
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            DailyDevJobService.enqueueWork(this, intent_O);
-        } else if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.N){
-            startService(intent_low);
-        }
+//        Intent intent_O = new Intent(this, DailyDevotionServicev2.class);
+        Intent intent_low = new Intent(this, DailyDevotionServicev1.class);
+//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+//            DailyDevotionServicev2.enqueueWork(this, intent_O);
+//        } else if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.N){
+//            startService(intent_low);
+//        }
+        ContextCompat.startForegroundService(this, intent_low);
         getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, new LoadingScreenFrag(), "LoadingScreenFrag").commit();
     }
 

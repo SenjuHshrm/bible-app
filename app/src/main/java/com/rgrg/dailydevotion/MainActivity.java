@@ -21,12 +21,11 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Intent intent_O = new Intent(this, DailyDevJobService.class);
-        Intent intent_low = new Intent(this, DailyDevotionNotificationService.class);
+        Intent i = new Intent(this, DailyDevotionServicev1.class);
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            DailyDevJobService.enqueueWork(this, intent_O);
+            startForegroundService(i);
         } else if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.N){
-            startService(intent_low);
+            startService(i);
         }
         getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, new LoadingScreenFrag(), "LoadingScreenFrag").commit();
     }

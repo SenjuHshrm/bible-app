@@ -4,6 +4,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
+import android.os.Build;
 import android.os.IBinder;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,6 +14,8 @@ import com.rgrg.dailydevotion.MainActivity;
 import com.rgrg.dailydevotion.R;
 
 import java.util.Calendar;
+
+import static com.rgrg.dailydevotion.notification.DailyDevotion.CHANNEL_ID;
 
 public class DailyDevotionServicev1 extends Service {
 
@@ -41,7 +44,11 @@ public class DailyDevotionServicev1 extends Service {
         } else if(Calendar.getInstance().getTimeInMillis() == milliE) {
             notifyUser("evening");
         }
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            return START_REDELIVER_INTENT;
+        }
         return START_STICKY;
+
     }
     @Nullable
     @Override
@@ -62,7 +69,7 @@ public class DailyDevotionServicev1 extends Service {
             String msg = "Time for your " + str + " journal";
             PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 1020, new Intent(getApplicationContext(), MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
             NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
-            NotificationCompat.Builder notif = new NotificationCompat.Builder(getApplicationContext(), "1020")
+            NotificationCompat.Builder notif = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
                     .setContentIntent(pendingIntent)
                     .setContentTitle("Daily Devotion")
                     .setContentText(msg)
@@ -70,7 +77,12 @@ public class DailyDevotionServicev1 extends Service {
                     .setPriority(NotificationCompat.PRIORITY_HIGH)
                     .setDefaults(NotificationCompat.DEFAULT_ALL)
                     .setAutoCancel(true);
-            notificationManager.notify(1020, notif.build());
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+                startForeground(1020, notif.build());
+                stopForeground(false);
+            } else {
+                notificationManager.notify(1020, notif.build());
+            }
         } catch (NullPointerException e) {
             e.printStackTrace();
         }

@@ -26,9 +26,7 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
-    <service android:name=".notification.DailyDevotionServicev2"
-        android:enabled="true"/>
-    <service android:name=".notification.DailyDevotionServicev1"
+        <service android:name=".notification.DailyDevotionServicev1"
         android:enabled="true" />
 
         <receiver android:name=".notification.StartAppOnBoot"

@@ -226,7 +226,7 @@ public class CalendarViewFrag extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         Button btn = (Button)view;
         String d = btn.getText().toString();
-        getActivity().getSupportFragmentManager().beginTransaction()
+        getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in,R.anim.left_out)
                 .replace(R.id.frag_con,
                         JournalFrag.main(MONTH_NAME, d, Integer.toString(Calendar.getInstance().get(Calendar.YEAR))),
                         "JournalFrag").commit();

@@ -42,7 +42,7 @@ public class MonthListFrag extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 TextView monthnm = (TextView) view.findViewById(R.id.MonthName);
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, CalendarViewFrag.main(monthnm.getText().toString()), "CalendarViewFrag").commit();
+                getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in,R.anim.left_out).replace(R.id.frag_con, CalendarViewFrag.main(monthnm.getText().toString()), "CalendarViewFrag").commit();
             }
         });
         return view;

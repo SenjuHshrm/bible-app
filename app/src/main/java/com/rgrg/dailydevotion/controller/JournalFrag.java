@@ -209,6 +209,7 @@ public class JournalFrag extends Fragment{
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
+                        .setCustomAnimations(R.anim.fade_in,R.anim.left_out)
                         .replace(R.id.frag_con, VerseViewFrag.main(MONTH,DAY,YEAR,verse), "VerseViewFrag")
                         .commit();
             }

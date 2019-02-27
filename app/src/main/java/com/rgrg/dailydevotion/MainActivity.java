@@ -42,34 +42,34 @@ public class MainActivity extends AppCompatActivity {
                 finish();
                 break;
             case "TestamentFrag":
-                getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, new MainMenuFrag(), "MainMenuFrag").commit();
+                getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.left_in,R.anim.fade_out).replace(R.id.frag_con, new MainMenuFrag(), "MainMenuFrag").commit();
                 break;
             case "BookMenuFrag":
-                getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, new TestamentFrag(), "TestamentFrag").commit();
+                getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.left_in,R.anim.fade_out).replace(R.id.frag_con, new TestamentFrag(), "TestamentFrag").commit();
                 break;
             case "ChapterListFrag":
-                getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, BookMenuFrag.main(ChapterListFrag.T_PART), "BookMenuFrag").commit();
+                getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.left_in,R.anim.fade_out).replace(R.id.frag_con, BookMenuFrag.main(ChapterListFrag.T_PART), "BookMenuFrag").commit();
                 break;
             case "ChapterViewFrag":
-                getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, ChapterListFrag.main(ChapterViewFrag.B_CHAPTERS, ChapterViewFrag.TYPE,  ChapterViewFrag.BOOKNAME), "ChapterListFrag").commit();
+                getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.left_in,R.anim.fade_out).replace(R.id.frag_con, ChapterListFrag.main(ChapterViewFrag.B_CHAPTERS, ChapterViewFrag.TYPE,  ChapterViewFrag.BOOKNAME), "ChapterListFrag").commit();
                 break;
             case "InstructionFrag":
-                getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, new MainMenuFrag(), "MainMenuFrag").commit();
+                getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.left_in,R.anim.fade_out).replace(R.id.frag_con, new MainMenuFrag(), "MainMenuFrag").commit();
                 break;
             case "MonthListFrag":
-                getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, new MainMenuFrag(), "MainMenuFrag").commit();
+                getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.left_in,R.anim.fade_out).replace(R.id.frag_con, new MainMenuFrag(), "MainMenuFrag").commit();
                 break;
             case "CalendarViewFrag":
-                getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, new MonthListFrag(), "MonthListFrag").commit();
+                getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.left_in,R.anim.fade_out).replace(R.id.frag_con, new MonthListFrag(), "MonthListFrag").commit();
                 break;
             case "JournalFrag":
-                getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, CalendarViewFrag.main(JournalFrag.MONTH), "CalendarViewFrag").commit();
+                getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.left_in,R.anim.fade_out).replace(R.id.frag_con, CalendarViewFrag.main(JournalFrag.MONTH), "CalendarViewFrag").commit();
                 break;
             case "VerseViewFrag":
                 String mnt = VerseViewFrag.MONTH,
                         day = VerseViewFrag.DAY,
                         yr = VerseViewFrag.YEAR;
-                getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, JournalFrag.main(mnt, day, yr), "JournalFrag").commit();
+                getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.left_in,R.anim.fade_out).replace(R.id.frag_con, JournalFrag.main(mnt, day, yr), "JournalFrag").commit();
                 break;
         }
     }

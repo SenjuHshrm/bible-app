@@ -25,6 +25,7 @@ public class DailyDevotionService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
+        int res = 0;
         Intent i = intent;
         onTaskRemoved(i);
         Calendar calM = Calendar.getInstance();
@@ -45,10 +46,11 @@ public class DailyDevotionService extends Service {
             notifyUser("evening");
         }
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            return START_REDELIVER_INTENT;
+            res = START_REDELIVER_INTENT;
+        } else if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.N){
+            res = START_STICKY;
         }
-        return START_STICKY;
-
+        return res;
     }
     @Nullable
     @Override
@@ -80,7 +82,7 @@ public class DailyDevotionService extends Service {
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
                 startForeground(1020, notif.build());
                 stopForeground(false);
-            } else {
+            } else if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.N) {
                 notificationManager.notify(1020, notif.build());
             }
         } catch (NullPointerException e) {

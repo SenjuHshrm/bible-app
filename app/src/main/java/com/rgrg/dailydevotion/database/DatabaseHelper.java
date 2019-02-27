@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import java.io.File;
@@ -13,14 +14,14 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class DatabaseHelper extends SQLiteOpenHelper{
-    static String DB_PATH = "/data/data/com.rgrg.dailydevotion/databases/";
-    static String DB_NAME = "daily_dev_journal.db";
-    SQLiteDatabase db;
+    private static String DB_PATH = "/data/data/com.rgrg.dailydevotion/databases/";
+    private static String DB_NAME = "daily_dev_journal.db";
+    private SQLiteDatabase db;
     private final Context mContext;
 
-    public DatabaseHelper(Context context) {
-        super(context, DB_NAME, null, 1);
-        this.mContext = context;
+    public DatabaseHelper(Context ctx) {
+        super(ctx, DB_NAME, null, 1);
+        this.mContext = ctx;
     }
 
     @Override
@@ -57,10 +58,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         try {
             final String mPath = DB_PATH + DB_NAME;
             final File file = new File(mPath);
-            if (file.exists())
-                return true;
-            else
-                return false;
+            return file.exists();
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -168,11 +166,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         contVal.put("pray", req[3]);
         contVal.put("time", "morning");
         long response = db.insert("journal", null, contVal);
-        if(response == -1){
-            res = false;
-        } else {
-            res = true;
-        }
+        res = response != -1;
+        db.close();
         return res;
     }
 
@@ -187,11 +182,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         contVal.put("pray", req[3]);
         contVal.put("time", "evening");
         long response = db.insert("journal", null, contVal);
-        if(response == -1){
-            res = false;
-        } else {
-            res = true;
-        }
+        res = response != -1;
+        db.close();
         return res;
     }
 
@@ -206,11 +198,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         contVal.put("pray", req[3]);
         contVal.put("time", "morning");
         long response = db.update("journal", contVal, "date = ? AND time = ?", new String[]{req[4], "morning"});
-        if(response == -1){
-            res = false;
-        } else {
-            res = true;
-        }
+        res = response != -1;
+        db.close();
         return res;
     }
 
@@ -225,11 +214,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         contVal.put("pray", req[3]);
         contVal.put("time", "evening");
         long response = db.update("journal", contVal, "date = ? AND time = ?", new String[]{req[4], "evening"});
-        if(response == -1){
-            res = false;
-        } else {
-            res = true;
-        }
+        res = response != -1;
+        db.close();
         return res;
     }
 
@@ -237,11 +223,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         boolean res;
         db = this.getWritableDatabase();
         long response = db.delete("journal", "date = ? AND time = ?", new String[]{req[4], "morning"});
-        if(response == -1){
-            res = false;
-        } else {
-            res = true;
-        }
+        res = response != -1;
+        db.close();
         return res;
     }
 
@@ -249,11 +232,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         boolean res;
         db = this.getWritableDatabase();
         long response = db.delete("journal", "date = ? AND time = ?", new String[]{req[4], "evening"});
-        if(response == -1){
-            res = false;
-        } else {
-            res = true;
-        }
+        res = response != -1;
+        db.close();
         return res;
     }
 

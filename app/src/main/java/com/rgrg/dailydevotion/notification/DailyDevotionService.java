@@ -17,9 +17,9 @@ import java.util.Calendar;
 
 import static com.rgrg.dailydevotion.notification.DailyDevotion.CHANNEL_ID;
 
-public class DailyDevotionServicev1 extends Service {
+public class DailyDevotionService extends Service {
 
-    public DailyDevotionServicev1() {
+    public DailyDevotionService() {
 
     }
 

@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Intent i = new Intent(this, DailyDevotionServicev1.class);
+        Intent i = new Intent(this, DailyDevotionService.class);
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             startForegroundService(i);
         } else if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.N){

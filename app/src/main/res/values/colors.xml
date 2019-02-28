@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#BCFF79</color>
-    <color name="colorPrimaryDark">#548235</color>
+    <color name="colorPrimaryDark">#b5b5b5</color>
     <color name="colorAccent">#548235</color>
     <color name="colorBg">#B1C27A</color>
     <color name="halfDone">#ff9428</color>
@@ -12,4 +12,5 @@
     <color name="bgTransparent">#00FFFFFF</color>
     <color name="bgTransparent2">#90FFFFFF</color>
     <color name="bgInput">#f2f2f2</color>
+    <color name="toolbarColor">#232323</color>
 </resources>

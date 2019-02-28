@@ -1,14 +1,11 @@
 package com.rgrg.dailydevotion;
 
-import android.content.Intent;
-import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import com.rgrg.dailydevotion.controller.*;
 import com.rgrg.dailydevotion.database.DatabaseHelper;
-import com.rgrg.dailydevotion.notification.*;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -21,13 +18,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Intent i = new Intent(this, DailyDevotionService.class);
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            startForegroundService(i);
-        } else if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.N){
-            startService(i);
-        }
-        getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, new LoadingScreenFrag(), "LoadingScreenFrag").commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, new MainMenuFrag(), "MainMenuFrag").commit();
     }
 
     @Override
@@ -35,9 +26,6 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fragManager = getSupportFragmentManager();
         Fragment currPage = fragManager.findFragmentById(R.id.frag_con);
         switch(currPage.getTag()){
-            case "LoadingScreenFrag":
-                finish();
-                break;
             case "MainMenuFrag":
                 finish();
                 break;

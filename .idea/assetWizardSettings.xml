@@ -62,6 +62,8 @@
                                   </option>
                                   <option name="values">
                                     <map>
+                                      <entry key="backgroundAssetType" value="COLOR" />
+                                      <entry key="backgroundColor" value="afafaf" />
                                       <entry key="foregroundImage" value="D:\app_logo.png" />
                                       <entry key="outputName" value="ic_app_logo" />
                                       <entry key="showGrid" value="true" />

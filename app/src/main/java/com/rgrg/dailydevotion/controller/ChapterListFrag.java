@@ -84,7 +84,7 @@ public class ChapterListFrag extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         Button b = (Button)view;
         getActivity()
-                .getSupportFragmentManager().beginTransaction()
+                .getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in,R.anim.left_out)
                 .replace(R.id.frag_con, ChapterViewFrag.main(B_CHAPTER,Integer.parseInt(b.getText().toString()), B_BOOK,T_PART), "ChapterViewFrag").commit();
     }
 }

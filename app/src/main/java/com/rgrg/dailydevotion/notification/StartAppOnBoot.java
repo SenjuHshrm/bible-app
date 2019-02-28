@@ -9,7 +9,7 @@ public class StartAppOnBoot extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         if(Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())){
-            Intent i = new Intent(context, DailyDevotionServicev1.class);
+            Intent i = new Intent(context, DailyDevotionService.class);
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
                 context.startForegroundService(i);

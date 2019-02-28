@@ -43,6 +43,6 @@ public class TestamentFrag extends Fragment implements  View.OnClickListener{
                 str = "NEW";
                 break;
         }
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, BookMenuFrag.main(str), "BookMenuFrag").commit();
+        getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in,R.anim.left_out).replace(R.id.frag_con, BookMenuFrag.main(str), "BookMenuFrag").commit();
     }
 }

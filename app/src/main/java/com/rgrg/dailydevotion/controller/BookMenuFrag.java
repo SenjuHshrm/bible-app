@@ -86,7 +86,7 @@ public class BookMenuFrag extends Fragment {
                 TextView chptr = (TextView) view.findViewById(R.id.ChapterNum);
                 final String bkName = booknm.getText().toString();
                 final int chapters = Integer.parseInt(chptr.getText().toString());
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, ChapterListFrag.main(chapters, arg, bkName), "ChapterListFrag").commit();
+                getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in,R.anim.left_out).replace(R.id.frag_con, ChapterListFrag.main(chapters, arg, bkName), "ChapterListFrag").commit();
             }
         });
         return view;

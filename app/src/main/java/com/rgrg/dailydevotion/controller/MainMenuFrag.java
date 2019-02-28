@@ -63,13 +63,13 @@ public class MainMenuFrag extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.bibleBtn:
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, new TestamentFrag(), "TestamentFrag").commit();
+                getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in,R.anim.left_out).replace(R.id.frag_con, new TestamentFrag(), "TestamentFrag").commit();
                 break;
             case R.id.ddBtn:
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, new MonthListFrag(), "MonthListFrag").commit();
+                getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in,R.anim.left_out).replace(R.id.frag_con, new MonthListFrag(), "MonthListFrag").commit();
                 break;
             case R.id.infoBtn:
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, new InstructionFrag(), "InstructionFrag").commit();
+                getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in,R.anim.left_out).replace(R.id.frag_con, new InstructionFrag(), "InstructionFrag").commit();
                 break;
         }
     }

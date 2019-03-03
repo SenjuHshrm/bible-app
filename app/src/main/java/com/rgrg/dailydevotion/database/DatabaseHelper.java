@@ -34,10 +34,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     }
 
-    /**
-     * This method will create database in application package /databases
-     * directory when first time application launched
-     **/
     public void createDataBase() throws Exception {
         boolean mDataBaseExist = checkDataBase();
         if (!mDataBaseExist) {
@@ -53,7 +49,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         }
     }
 
-    /** This method checks whether database is exists or not **/
     private boolean checkDataBase() {
         try {
             final String mPath = DB_PATH + DB_NAME;
@@ -65,10 +60,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         }
     }
 
-    /**
-     * This method will copy database from /assets directory to application
-     * package /databases directory
-     **/
     private void copyDataBase() throws Exception {
         try {
             String db_path = "db/" + DB_NAME;
@@ -88,7 +79,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         }
     }
 
-    /** This method open database for operations **/
     public boolean openDataBase() throws Exception {
         String mPath = DB_PATH + DB_NAME;
         db = SQLiteDatabase.openDatabase(mPath, null,
@@ -96,7 +86,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return db.isOpen();
     }
 
-    /** This method close database connection and released occupied memory **/
     @Override
     public synchronized void close() {
         if (db != null)

@@ -9,21 +9,15 @@ import android.view.ViewGroup;
 
 import com.rgrg.dailydevotion.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class InstructionFrag extends Fragment {
 
 
-    public InstructionFrag() {
-        // Required empty public constructor
-    }
+    public InstructionFrag() {}
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_instruction, container, false);
     }
 

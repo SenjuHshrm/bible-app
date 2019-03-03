@@ -6,7 +6,6 @@
     android:orientation="horizontal"
     tools:context="com.rgrg.dailydevotion.controller.CalendarViewFrag">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="0dp"

@@ -18,9 +18,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class BookMenuFrag extends Fragment {
 
     private static final String[] oldBook = {"Genesis","Exodus","Leviticus","Numbers","Deuteronomy",
@@ -53,7 +50,7 @@ public class BookMenuFrag extends Fragment {
             "1","22"};
     private String arg;
     public BookMenuFrag() {
-        // Required empty public constructor
+
     }
 
     public static BookMenuFrag main(String part) {

@@ -20,9 +20,7 @@ public class MainMenuFrag extends Fragment implements View.OnClickListener{
     private ImageButton[] imgBtns = {bibleBtn, ddBtn, infoBtn, viewBtn};
     private String[] btnImg = {"ic/bible.png", "ic/devotion.png", "ic/pattern.png"};
     private int[] ids = {R.id.bibleBtn, R.id.ddBtn, R.id.infoBtn};
-    public MainMenuFrag() {
-
-    }
+    public MainMenuFrag() {}
 
 
     @Override

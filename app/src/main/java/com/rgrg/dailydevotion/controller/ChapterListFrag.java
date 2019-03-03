@@ -18,16 +18,13 @@ import android.widget.TextView;
 
 import com.rgrg.dailydevotion.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class ChapterListFrag extends Fragment implements View.OnClickListener{
     public static String T_PART = "";
     public static String B_BOOK = "";
     public static int B_CHAPTER = 0;
     private GridLayout gl;
     public ChapterListFrag() {
-        // Required empty public constructor
+
     }
 
     public static ChapterListFrag main(int chp, String... str) {
@@ -46,7 +43,6 @@ public class ChapterListFrag extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_chapter_list, container, false);
         TextView BookName = (TextView) view.findViewById(R.id.BookNameChpList);
         gl = (GridLayout) view.findViewById(R.id.ChaptersList);

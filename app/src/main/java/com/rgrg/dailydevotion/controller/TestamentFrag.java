@@ -10,20 +10,14 @@ import android.widget.Button;
 
 import com.rgrg.dailydevotion.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class TestamentFrag extends Fragment implements  View.OnClickListener{
 
-    public TestamentFrag() {
-        // Required empty public constructor
-    }
+    public TestamentFrag() {}
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_testament, container, false);
         Button btnOld = (Button) view.findViewById(R.id.btnOldT);
         Button btnNew = (Button) view.findViewById(R.id.btnNewT);

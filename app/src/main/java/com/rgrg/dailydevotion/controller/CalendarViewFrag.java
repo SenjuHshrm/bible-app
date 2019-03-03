@@ -21,9 +21,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class CalendarViewFrag extends Fragment implements View.OnClickListener{
     public static String MONTH_NAME = "";
     private GridLayout gl;
@@ -31,7 +28,7 @@ public class CalendarViewFrag extends Fragment implements View.OnClickListener{
 
 
     public CalendarViewFrag() {
-        // Required empty public constructor
+
     }
 
     public static CalendarViewFrag main(String mn) {
@@ -46,7 +43,6 @@ public class CalendarViewFrag extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_calendar_view, container, false);
         gl = (GridLayout) view.findViewById(R.id.month_days_view);
         monthName = (TextView) view.findViewById(R.id.MonthName);

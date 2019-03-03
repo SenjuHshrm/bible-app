@@ -25,9 +25,7 @@ public class DailyDevotionService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
-//        int res = 0;
-        Intent i = intent;
-        onTaskRemoved(i);
+        onTaskRemoved(intent);
         Calendar calM = Calendar.getInstance();
         Calendar calE = Calendar.getInstance();
         calM.set(Calendar.HOUR_OF_DAY, 6);
@@ -45,12 +43,6 @@ public class DailyDevotionService extends Service {
         } else if(Calendar.getInstance().getTimeInMillis() == milliE) {
             notifyUser("evening");
         }
-//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-//            res = START_REDELIVER_INTENT;
-//        } else if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.N){
-//            res = START_STICKY;
-//        }
-//        return res;
         return START_STICKY;
     }
     @Nullable

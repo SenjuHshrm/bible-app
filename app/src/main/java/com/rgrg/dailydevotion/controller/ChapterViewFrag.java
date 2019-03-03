@@ -14,9 +14,6 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class ChapterViewFrag extends Fragment {
     public static int B_CHAPTERS = 0;
     public static int B_SPCHP = 0;
@@ -25,7 +22,7 @@ public class ChapterViewFrag extends Fragment {
     private TextView cont, bookname;
 
     public ChapterViewFrag() {
-        // Required empty public constructor
+
     }
 
     public static ChapterViewFrag main(int int1, int int2, String str1, String str2) {
@@ -46,7 +43,6 @@ public class ChapterViewFrag extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_chapter_view, container, false);
         cont = (TextView) view.findViewById(R.id.ChapterContent);
         bookname = (TextView) view.findViewById(R.id.BookNameView);

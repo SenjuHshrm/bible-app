@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,18 +20,13 @@ import com.rgrg.dailydevotion.database.DatabaseHelper;
 
 import java.util.Calendar;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class JournalFrag extends Fragment{
     public static String MONTH = "";
     public static String DAY = "";
     public static String YEAR = "";
     private TextView title, bverse, cdate, inS, inO, inA, inP;
     private Button btnSave, btnUpdate, btnDel;
-    public JournalFrag() {
-        // Required empty public constructor
-    }
+    public JournalFrag() {}
 
     public static JournalFrag main(String... str) {
         JournalFrag frag = new JournalFrag();
@@ -51,7 +45,6 @@ public class JournalFrag extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_journal, container, false);
         title = (TextView) view.findViewById(R.id.time_base_title);
         bverse = (TextView) view.findViewById(R.id.bible_verse);

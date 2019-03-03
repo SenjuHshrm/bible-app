@@ -4,7 +4,6 @@ package com.rgrg.dailydevotion.controller;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -182,7 +181,6 @@ public class VerseViewFrag extends Fragment {
             while((line = reader.readLine()) != null){
                 cnt++;
                 res[cnt] = line;
-                Log.e("Verse", line);
             }
         } catch (Exception e) {
             e.printStackTrace();

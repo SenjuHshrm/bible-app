@@ -6,8 +6,6 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,7 +56,6 @@ public class ChapterListFrag extends Fragment implements View.OnClickListener{
         disp.getSize(size);
         int row = (chpt / 5) + (chpt % 5);
         int btnWidth = size.x / 5;
-        Log.e("GridLayout Width", Float.toString(btnWidth));
         gl.setColumnCount(5);
         gl.removeAllViews();
         gl.setRowCount(row);

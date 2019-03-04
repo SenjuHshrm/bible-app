@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Handler;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,12 +25,12 @@ public class LoadingActivity extends AppCompatActivity {
     }
 
     private void loadImg(){
-        ImageView img = (ImageView) findViewById(R.id.imageView);
-        try{
-            InputStream is = getAssets().open("bg/LoadingImg.png");
+        try {
+            ConstraintLayout cl = (ConstraintLayout) findViewById(R.id.app_loading_screen);
+            InputStream is = getAssets().open("bg/ddev_loading.jpg");
             Drawable d = Drawable.createFromStream(is, null);
-            img.setImageDrawable(d);
-        }catch (Exception e){
+            cl.setBackground(d);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

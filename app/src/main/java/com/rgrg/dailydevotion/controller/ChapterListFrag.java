@@ -54,16 +54,16 @@ public class ChapterListFrag extends Fragment implements View.OnClickListener{
         Display disp = getActivity().getWindowManager().getDefaultDisplay();
         Point size = new Point();
         disp.getSize(size);
-        int row = (chpt / 5) + (chpt % 5);
-        int btnWidth = size.x / 5;
-        gl.setColumnCount(5);
+        int row = (chpt / 2) + (chpt % 2);
+        int btnWidth = size.x / 2;
+        gl.setColumnCount(2);
         gl.removeAllViews();
         gl.setRowCount(row);
         for(int i = 0 ; i < chpt; i++){
             String btnName = Integer.toString(i + 1);
             Button btn = new Button(getActivity());
             btn.setText(btnName);
-            btn.setTextColor(ContextCompat.getColor(getContext(), R.color.colorBg));
+            btn.setTextColor(ContextCompat.getColor(getContext(), android.R.color.background_dark));
             btn.setTypeface(btn.getTypeface(), Typeface.BOLD);
             btn.setTextSize(20);
             btn.setLayoutParams(new ViewGroup.LayoutParams(btnWidth, ViewGroup.LayoutParams.WRAP_CONTENT));

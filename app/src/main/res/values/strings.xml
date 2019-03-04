@@ -53,4 +53,8 @@
     <string name="btnBible">BIBLE</string>
     <string name="btnDev">DAILY DEVOTION</string>
     <string name="btnPattern">DEVOTION\nPATTERN</string>
+    <string name="infoOldT">\tThe first part of the Christian Bible.
+        Most of the books were originally written in Hebrew, some in Aramaic, between 1200 and 100 BC.
+    They comprise the chief texts of the law, history prophecy and wisdom literature of the ancient people of Israel.</string>
+    <string name="infoNewT">\tThe second part of the Christian Bible. This part discusses the teachings and person of Jesus as well as events in first-century Christianity.</string>
 </resources>

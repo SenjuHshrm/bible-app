@@ -3,7 +3,9 @@ package com.rgrg.dailydevotion.controller;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.renderscript.ScriptGroup;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -12,12 +14,14 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rgrg.dailydevotion.R;
 import com.rgrg.dailydevotion.database.DatabaseHelper;
 
+import java.io.InputStream;
 import java.util.Calendar;
 
 public class JournalFrag extends Fragment{
@@ -69,6 +73,7 @@ public class JournalFrag extends Fragment{
         btnSave.setOnClickListener(onBtnClick());
         btnUpdate.setOnClickListener(onBtnClick());
         btnDel.setOnClickListener(onBtnClick());
+        changeTimeStat(view);
         if(TitleLbl.equalsIgnoreCase("AM")){
             title.setText(getActivity().getString(R.string.lblMDev));
             GetSOAPM(view);
@@ -77,6 +82,27 @@ public class JournalFrag extends Fragment{
             GetSOAPE(view);
         }
         return view;
+    }
+
+    private void changeTimeStat(View v){
+        try {
+            String DIR = "";
+            switch(Calendar.getInstance().get(Calendar.AM_PM)){
+                case Calendar.AM:
+                    DIR = "ic/morning.png";
+                    break;
+                case Calendar.PM:
+                    DIR = "ic/evening.png";
+                    break;
+            }
+            ImageView iv = (ImageView)v.findViewById(R.id.imgTimeStat);
+            InputStream is = getActivity().getAssets().open(DIR);
+            Drawable d = Drawable.createFromStream(is,null);
+            iv.setImageDrawable(d);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     private String getBibleVerse() {

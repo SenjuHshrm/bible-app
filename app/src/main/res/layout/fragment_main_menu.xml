@@ -26,24 +26,21 @@
     <View
         android:id="@+id/divider2"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="150dp"
+        android:layout_height="60dp"
         android:background="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bannerImg"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <FrameLayout
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="50dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.57"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bannerImg">
+        app:layout_constraintHorizontal_bias="0.42"
+        app:layout_constraintStart_toStartOf="parent">
 
         <TableLayout
             android:layout_width="match_parent"
@@ -56,7 +53,7 @@
                 <ImageButton
                     android:id="@+id/bibleBtn"
                     android:layout_width="wrap_content"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:background="@android:color/background_light"
@@ -68,7 +65,7 @@
                 <ImageButton
                     android:id="@+id/ddBtn"
                     android:layout_width="wrap_content"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:background="@android:color/background_light"
@@ -79,7 +76,7 @@
                 <ImageButton
                     android:id="@+id/infoBtn"
                     android:layout_width="wrap_content"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:background="@android:color/background_light"
@@ -103,7 +100,7 @@
                     android:gravity="center"
                     android:text="@string/btnBible"
                     android:textAppearance="@style/TextAppearance.AppCompat"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -115,7 +112,7 @@
                     android:gravity="center"
                     android:text="@string/btnDev"
                     android:textAppearance="@style/TextAppearance.AppCompat"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -127,7 +124,7 @@
                     android:gravity="center"
                     android:text="@string/btnPattern"
                     android:textAppearance="@style/TextAppearance.AppCompat"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
             </TableRow>

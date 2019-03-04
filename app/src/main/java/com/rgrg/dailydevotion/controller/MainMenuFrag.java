@@ -36,7 +36,7 @@ public class MainMenuFrag extends Fragment implements View.OnClickListener{
         ImageView banner = (ImageView) v.findViewById(R.id.bannerImg);
         try {
             Random rnd = new Random();
-            int val = rnd.nextInt(12);
+            int val = rnd.nextInt(11);
             String fileDir = "verses/" + Integer.toString(val) + ".png";
             InputStream is = getActivity().getAssets().open(fileDir);
             Drawable d = Drawable.createFromStream(is, null);
@@ -73,5 +73,7 @@ public class MainMenuFrag extends Fragment implements View.OnClickListener{
                 getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in,R.anim.left_out).replace(R.id.frag_con, new InstructionFrag(), "InstructionFrag").commit();
                 break;
         }
+        ImageButton ib = (ImageButton) getActivity().findViewById(R.id.searchBtn);
+        ib.setVisibility(View.INVISIBLE);
     }
 }

@@ -9,16 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.rgrg.dailydevotion.R;
 
 import java.io.InputStream;
+import java.util.Random;
 
 public class MainMenuFrag extends Fragment implements View.OnClickListener{
     private ImageButton bibleBtn, ddBtn, infoBtn, viewBtn;
     private ImageButton[] imgBtns = {bibleBtn, ddBtn, infoBtn, viewBtn};
-    private String[] btnImg = {"bg/bibleBtn.png", "bg/dDevBtn.png", "bg/infoBtn.png"};
+    private String[] btnImg = {"ic/bible.png", "ic/devotion.png", "ic/pattern.png"};
     private int[] ids = {R.id.bibleBtn, R.id.ddBtn, R.id.infoBtn};
     public MainMenuFrag() {
 
@@ -37,7 +37,10 @@ public class MainMenuFrag extends Fragment implements View.OnClickListener{
     private void loadBanner(View v) {
         ImageView banner = (ImageView) v.findViewById(R.id.bannerImg);
         try {
-            InputStream is = getActivity().getAssets().open("bg/banner.png");
+            Random rnd = new Random();
+            int val = rnd.nextInt(12);
+            String fileDir = "verses/" + Integer.toString(val) + ".png";
+            InputStream is = getActivity().getAssets().open(fileDir);
             Drawable d = Drawable.createFromStream(is, null);
             banner.setImageDrawable(d);
         } catch (Exception e) {

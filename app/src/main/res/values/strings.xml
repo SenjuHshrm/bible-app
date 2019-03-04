@@ -50,4 +50,7 @@
     <string name="m10">October</string>
     <string name="m11">November</string>
     <string name="m12">December</string>
+    <string name="btnBible">BIBLE</string>
+    <string name="btnDev">DAILY DEVOTION</string>
+    <string name="btnPattern">DEVOTION\nPATTERN</string>
 </resources>

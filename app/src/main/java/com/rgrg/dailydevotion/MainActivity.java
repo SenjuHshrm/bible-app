@@ -1,11 +1,16 @@
 package com.rgrg.dailydevotion;
 
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.FrameLayout;
+
 import com.rgrg.dailydevotion.controller.*;
 import com.rgrg.dailydevotion.database.DatabaseHelper;
+
+import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -18,7 +23,19 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        loadBg();
         getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, new MainMenuFrag(), "MainMenuFrag").commit();
+    }
+
+    private void loadBg(){
+        try {
+            FrameLayout fl = (FrameLayout) findViewById(R.id.frag_con);
+            InputStream is = getAssets().open("bg/ddev_bg.jpeg");
+            Drawable d = Drawable.createFromStream(is, null);
+            fl.setBackground(d);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

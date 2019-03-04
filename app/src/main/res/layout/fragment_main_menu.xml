@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/background_light"
     tools:context="com.rgrg.dailydevotion.controller.MainMenuFrag">
 
     <!-- TODO: Update blank fragment layout -->
@@ -12,77 +11,130 @@
         android:id="@+id/bannerImg"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="400dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="170dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="250dp"
         android:scaleType="fitXY"
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <android.support.constraint.ConstraintLayout
+    <View
+        android:id="@+id/divider2"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="49dp"
-        android:background="@color/notYet"
+        android:layout_height="0dp"
+        android:layout_marginTop="150dp"
+        android:background="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bannerImg"
+        app:layout_constraintVertical_bias="0.6" />
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.57"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bannerImg">
 
-        <ImageButton
-            android:id="@+id/bibleBtn"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="120dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="120dp"
-            android:background="@android:color/background_light"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_launcher_background"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <ImageButton
-            android:id="@+id/ddBtn"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="120dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="120dp"
-            android:background="@android:color/background_light"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_launcher_background"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bibleBtn" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <ImageButton
-            android:id="@+id/infoBtn"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="120dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="120dp"
-            android:layout_marginBottom="10dp"
-            android:background="@android:color/background_light"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_launcher_background"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ddBtn" />
-    </android.support.constraint.ConstraintLayout>
+                <ImageButton
+                    android:id="@+id/bibleBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/background_light"
+                    android:cropToPadding="true"
+                    android:gravity="center"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_launcher_background" />
+
+                <ImageButton
+                    android:id="@+id/ddBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/background_light"
+                    android:gravity="center"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_launcher_background" />
+
+                <ImageButton
+                    android:id="@+id/infoBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/background_light"
+                    android:gravity="center"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_launcher_background" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/btnBible"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/btnDev"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/btnPattern"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+            </TableRow>
+
+        </TableLayout>
+    </FrameLayout>
 
 
 </android.support.constraint.ConstraintLayout>

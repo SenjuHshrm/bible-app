@@ -5,8 +5,8 @@
         android:startColor="#fcc023"
         android:endColor="#fcc023"/>
     <corners
-        android:radius="10px"/>
+        android:radius="10dp"/>
     <stroke
-        android:width="10px"
-        android:color="#D8D8D8"/>
+        android:width="15dp"
+        android:color="#00FFFFFF"/>
 </shape>

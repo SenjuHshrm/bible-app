@@ -7,10 +7,7 @@ import android.os.Handler;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
 
-import com.rgrg.dailydevotion.notification.DailyDevotionService;
 
 import java.io.InputStream;
 
@@ -40,10 +37,12 @@ public class LoadingActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable(){
             @Override
             public void run(){
-                Intent i = new Intent(getApplicationContext(), DailyDevotionService.class);
+
                 if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+                    Intent i = new Intent(getApplicationContext(), com.rgrg.dailydevotion.notification_latest.DailyDevotionService.class);
                     startForegroundService(i);
                 } else if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.N){
+                    Intent i = new Intent(getApplicationContext(), com.rgrg.dailydevotion.notification_legacy.DailyDevotionService.class);
                     startService(i);
                 }
                 Intent intent = new Intent(getApplicationContext(),MainActivity.class);

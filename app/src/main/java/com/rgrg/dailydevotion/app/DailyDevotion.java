@@ -1,4 +1,4 @@
-package com.rgrg.dailydevotion.notification;
+package com.rgrg.dailydevotion.app;
 
 import android.app.Application;
 import android.app.NotificationChannel;

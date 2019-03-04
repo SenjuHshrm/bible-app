@@ -1,12 +1,12 @@
-package com.rgrg.dailydevotion.notification;
+package com.rgrg.dailydevotion.notification_legacy;
 
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Build;
 import android.os.IBinder;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 
@@ -15,7 +15,7 @@ import com.rgrg.dailydevotion.R;
 
 import java.util.Calendar;
 
-import static com.rgrg.dailydevotion.notification.DailyDevotion.CHANNEL_ID;
+import static com.rgrg.dailydevotion.app.DailyDevotion.CHANNEL_ID;
 
 public class DailyDevotionService extends Service {
 
@@ -68,16 +68,11 @@ public class DailyDevotionService extends Service {
                     .setContentIntent(pendingIntent)
                     .setContentTitle("Daily Devotion")
                     .setContentText(msg)
-                    .setSmallIcon(R.mipmap.ic_app_logo)
+                    .setSmallIcon(R.mipmap.ic_launcher_round)
                     .setPriority(NotificationCompat.PRIORITY_HIGH)
                     .setDefaults(NotificationCompat.DEFAULT_ALL)
                     .setAutoCancel(true);
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-                startForeground(1020, notif.build());
-                stopForeground(false);
-            } else if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.N) {
-                notificationManager.notify(1020, notif.build());
-            }
+            notificationManager.notify(1020, notif.build());
         } catch (NullPointerException e) {
             e.printStackTrace();
         }

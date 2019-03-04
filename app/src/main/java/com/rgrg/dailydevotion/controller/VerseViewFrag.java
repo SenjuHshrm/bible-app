@@ -123,6 +123,7 @@ public class VerseViewFrag extends Fragment {
                 InputStream is = getActivity().getAssets().open(DIR + bookName + "_" + aChpt + ".txt");
                 BufferedReader reader = new BufferedReader(new InputStreamReader(is));
                 String line;
+                strBuild.append("Chapter ").append(aChpt).append("\n\n");
                 while ((line = reader.readLine()) != null) {
                     strBuild.append(line);
                     strBuild.append("\n\n");
@@ -130,7 +131,7 @@ public class VerseViewFrag extends Fragment {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            strBuild.append("\n\n");
+            strBuild.append("\n\n\n");
         }
         TextView txtView = v.findViewById(R.id.chapter_cont);
         txtView.setText(strBuild.toString());

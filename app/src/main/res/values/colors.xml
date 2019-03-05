@@ -13,4 +13,5 @@
     <color name="bgTransparent2">#90FFFFFF</color>
     <color name="bgInput">#f2f2f2</color>
     <color name="toolbarColor">#232323</color>
+    <color name="color_brown">#4E342E</color>
 </resources>

@@ -14,7 +14,7 @@
 
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TableRow
@@ -27,9 +27,12 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/btn_month"
+                    android:background="@mipmap/ic_btn_bg_m"
                     android:gravity="center"
-                    android:text="@string/m1" />
+                    android:text="@string/m1"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/bm2"
@@ -37,9 +40,12 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/btn_month"
+                    android:background="@mipmap/ic_btn_bg_m"
                     android:gravity="center"
-                    android:text="@string/m2" />
+                    android:text="@string/m2"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow
@@ -52,9 +58,12 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/btn_month"
+                    android:background="@mipmap/ic_btn_bg_m"
                     android:gravity="center"
-                    android:text="@string/m3" />
+                    android:text="@string/m3"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/bm4"
@@ -62,9 +71,12 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/btn_month"
+                    android:background="@mipmap/ic_btn_bg_m"
                     android:gravity="center"
-                    android:text="@string/m4" />
+                    android:text="@string/m4"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow
@@ -77,9 +89,12 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/btn_month"
+                    android:background="@mipmap/ic_btn_bg_m"
                     android:gravity="center"
-                    android:text="@string/m5" />
+                    android:text="@string/m5"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/bm6"
@@ -87,9 +102,12 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/btn_month"
+                    android:background="@mipmap/ic_btn_bg_m"
                     android:gravity="center"
-                    android:text="@string/m6" />
+                    android:text="@string/m6"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow
@@ -102,9 +120,12 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/btn_month"
+                    android:background="@mipmap/ic_btn_bg_m"
                     android:gravity="center"
-                    android:text="@string/m7" />
+                    android:text="@string/m7"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/bm8"
@@ -112,9 +133,12 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/btn_month"
+                    android:background="@mipmap/ic_btn_bg_m"
                     android:gravity="center"
-                    android:text="@string/m8" />
+                    android:text="@string/m8"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow
@@ -127,9 +151,12 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/btn_month"
+                    android:background="@mipmap/ic_btn_bg_m"
                     android:gravity="center"
-                    android:text="@string/m9" />
+                    android:text="@string/m9"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/bm10"
@@ -137,9 +164,12 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/btn_month"
+                    android:background="@mipmap/ic_btn_bg_m"
                     android:gravity="center"
-                    android:text="@string/m10" />
+                    android:text="@string/m10"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow
@@ -152,9 +182,12 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/btn_month"
+                    android:background="@mipmap/ic_btn_bg_m"
                     android:gravity="center"
-                    android:text="@string/m11" />
+                    android:text="@string/m11"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/bm12"
@@ -162,9 +195,12 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/btn_month"
+                    android:background="@mipmap/ic_btn_bg_m"
                     android:gravity="center"
-                    android:text="@string/m12" />
+                    android:text="@string/m12"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
             </TableRow>
 
         </TableLayout>

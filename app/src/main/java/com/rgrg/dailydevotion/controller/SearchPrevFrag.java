@@ -1,6 +1,7 @@
 package com.rgrg.dailydevotion.controller;
 
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -16,6 +18,7 @@ import android.widget.Toast;
 import com.rgrg.dailydevotion.R;
 import com.rgrg.dailydevotion.database.DatabaseHelper;
 
+import java.io.InputStream;
 import java.util.Calendar;
 
 public class SearchPrevFrag extends Fragment implements View.OnClickListener, CalendarView.OnDateChangeListener {
@@ -33,7 +36,19 @@ public class SearchPrevFrag extends Fragment implements View.OnClickListener, Ca
         cv.setOnDateChangeListener(this);
         Button b = (Button) view.findViewById(R.id.searchDev);
         b.setOnClickListener(this);
+        loadBg();
         return view;
+    }
+
+    private void loadBg(){
+        try {
+            FrameLayout fl = (FrameLayout) getActivity().findViewById(R.id.frag_con);
+            InputStream is = getActivity().getAssets().open("bg/bg_bright.png");
+            Drawable d = Drawable.createFromStream(is, null);
+            fl.setBackground(d);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

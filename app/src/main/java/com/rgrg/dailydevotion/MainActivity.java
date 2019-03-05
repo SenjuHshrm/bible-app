@@ -25,20 +25,8 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        loadBg();
         loadSearchIcon();
         getSupportFragmentManager().beginTransaction().replace(R.id.frag_con, new MainMenuFrag(), "MainMenuFrag").commit();
-    }
-
-    private void loadBg(){
-        try {
-            FrameLayout fl = (FrameLayout) findViewById(R.id.frag_con);
-            InputStream is = getAssets().open("bg/ddev_bg.jpeg");
-            Drawable d = Drawable.createFromStream(is, null);
-            fl.setBackground(d);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     private void loadSearchIcon() {

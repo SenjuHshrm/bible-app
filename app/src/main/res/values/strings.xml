@@ -24,18 +24,6 @@
     what God has shown to you, He will reveal even more than He is wanting to show.
     Be listening and journal your prayers\!</string>
 
-    <string name="new_message_notification_title_template">New message: %1$s</string>
-
-    <!-- TODO: remove this placeholder text -->
-    <string name="new_message_notification_placeholder_text_template">You said %1$s and lorem ipsum
-        dolor sit amet, consectetur adipiscing elit. Etiam non enim magna. Morbi dictum, velit vel
-        semper venenatis, magna odio volutpat velit, at ullamcorper nulla lacus sed turpis.
-        Pellentesque vitae metus elit, nec tincidunt tellus. Integer sed nisl sem, ullamcorper
-        ornare lacus. Duis ac mauris sed massa congue volutpat. Donec sed erat sit amet turpis
-        viverra rhoncus sit amet nec magna. Donec lacinia ligula at libero volutpat volutpat nec nec
-        tortor.
-    </string>
-
     <string name="action_share">Share</string>
     <string name="action_reply">Reply</string>
     <string name="m1">January</string>
@@ -56,5 +44,10 @@
     <string name="infoOldT">\tThe first part of the Christian Bible.
         Most of the books were originally written in Hebrew, some in Aramaic, between 1200 and 100 BC.
     They comprise the chief texts of the law, history prophecy and wisdom literature of the ancient people of Israel.</string>
-    <string name="infoNewT">\tThe second part of the Christian Bible. This part discusses the teachings and person of Jesus as well as events in first-century Christianity.</string>
+    <string name="infoNewT">\tThe second part of the Christian Bible. This part discusses the teachings and person of Jesus as well as events in first-century Christianity.\n</string>
+    <string name="instSearch">Instruction:\n\n
+        - Select the date of the previous devotion you have created.\n
+        - Select between AM (morning) and PM (evening).\n
+        - Click search. If you have records on the specified date, the devotion will be shown.\n
+    </string>
 </resources>

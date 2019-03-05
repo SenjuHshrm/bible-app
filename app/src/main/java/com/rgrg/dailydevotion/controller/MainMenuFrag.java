@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -29,6 +30,7 @@ public class MainMenuFrag extends Fragment implements View.OnClickListener{
         View view = inflater.inflate(R.layout.fragment_main_menu, container, false);
         loadBanner(view);
         loadBtn(view);
+        loadBg();
         return view;
     }
 
@@ -55,6 +57,17 @@ public class MainMenuFrag extends Fragment implements View.OnClickListener{
                 imgBtns[x].setImageDrawable(d);
                 imgBtns[x].setOnClickListener(this);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadBg(){
+        try {
+            FrameLayout fl = (FrameLayout) getActivity().findViewById(R.id.frag_con);
+            InputStream is = getActivity().getAssets().open("bg/bg_dark.jpg");
+            Drawable d = Drawable.createFromStream(is, null);
+            fl.setBackground(d);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -34,103 +34,99 @@
         app:layout_constraintTop_toBottomOf="@+id/bannerImg"
         app:layout_constraintVertical_bias="1.0" />
 
-    <FrameLayout
+    <TableLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintBottom_toBottomOf="@+id/divider2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.42"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bannerImg">
 
-        <TableLayout
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <TableRow
+            <ImageButton
+                android:id="@+id/bibleBtn"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@android:color/background_light"
+                android:cropToPadding="true"
+                android:gravity="center"
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_btn_bible" />
 
-                <ImageButton
-                    android:id="@+id/bibleBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:background="@android:color/background_light"
-                    android:cropToPadding="true"
-                    android:gravity="center"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/ic_launcher_background" />
+            <ImageButton
+                android:id="@+id/ddBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@android:color/background_light"
+                android:gravity="center"
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_btn_devotion" />
 
-                <ImageButton
-                    android:id="@+id/ddBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:background="@android:color/background_light"
-                    android:gravity="center"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/ic_launcher_background" />
-
-                <ImageButton
-                    android:id="@+id/infoBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:background="@android:color/background_light"
-                    android:gravity="center"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/ic_launcher_background" />
-
-            </TableRow>
-
-            <TableRow
+            <ImageButton
+                android:id="@+id/infoBtn"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@android:color/background_light"
+                android:gravity="center"
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_btn_pattern" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
 
 
-                <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/btnBible"
-                    android:textAppearance="@style/TextAppearance.AppCompat"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/btnBible"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/textView11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/btnDev"
-                    android:textAppearance="@style/TextAppearance.AppCompat"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/btnDev"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/textView13"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/btnPattern"
-                    android:textAppearance="@style/TextAppearance.AppCompat"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/btnPattern"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
-            </TableRow>
+        </TableRow>
 
-        </TableLayout>
-    </FrameLayout>
+    </TableLayout>
 
 
 </android.support.constraint.ConstraintLayout>

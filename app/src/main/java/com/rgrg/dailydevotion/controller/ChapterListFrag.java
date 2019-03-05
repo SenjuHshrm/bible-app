@@ -63,11 +63,11 @@ public class ChapterListFrag extends Fragment implements View.OnClickListener{
             String btnName = Integer.toString(i + 1);
             Button btn = new Button(getActivity());
             btn.setText(btnName);
-            btn.setTextColor(ContextCompat.getColor(getContext(), android.R.color.background_dark));
+            btn.setTextColor(ContextCompat.getColor(getContext(), android.R.color.background_light));
             btn.setTypeface(btn.getTypeface(), Typeface.BOLD);
-            btn.setTextSize(20);
+            btn.setTextSize(25);
             btn.setLayoutParams(new ViewGroup.LayoutParams(btnWidth, ViewGroup.LayoutParams.WRAP_CONTENT));
-            btn.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.btn_chapter_bg));
+            btn.setBackground(ContextCompat.getDrawable(getContext(), R.mipmap.ic_btn_bg_m));
             btn.setOnClickListener(this);
             gl.addView(btn);
         }

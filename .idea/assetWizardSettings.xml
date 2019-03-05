@@ -63,10 +63,10 @@
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="ffffff" />
-                                      <entry key="backgroundLayerName" value="ic_btn_bg_m_b" />
-                                      <entry key="foregroundImage" value="D:\Files\latestApp\DailyDevotion\app\src\main\assets\bg\btn_bg.jpeg" />
-                                      <entry key="foregroundLayerName" value="ic_btn_bg_m_f" />
-                                      <entry key="outputName" value="ic_btn_bg_m" />
+                                      <entry key="backgroundLayerName" value="ic_btn_pattern_b" />
+                                      <entry key="foregroundImage" value="D:\53766471_328009297855450_7355807616741670912_n.png" />
+                                      <entry key="foregroundLayerName" value="ic_btn_pattern_f" />
+                                      <entry key="outputName" value="ic_btn_pattern" />
                                     </map>
                                   </option>
                                 </PersistentState>

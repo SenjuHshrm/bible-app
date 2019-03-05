@@ -34,99 +34,13 @@
         app:layout_constraintTop_toBottomOf="@+id/bannerImg"
         app:layout_constraintVertical_bias="1.0" />
 
-    <TableLayout
+    <GridLayout
+        android:id="@+id/mmenu_btn_con"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="100dp"
-        app:layout_constraintBottom_toBottomOf="@+id/divider2"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bannerImg">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageButton
-                android:id="@+id/bibleBtn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:background="@android:color/background_light"
-                android:cropToPadding="true"
-                android:gravity="center"
-                android:scaleType="fitXY"
-                android:src="@mipmap/ic_btn_bible" />
-
-            <ImageButton
-                android:id="@+id/ddBtn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:background="@android:color/background_light"
-                android:gravity="center"
-                android:scaleType="fitXY"
-                android:src="@mipmap/ic_btn_devotion" />
-
-            <ImageButton
-                android:id="@+id/infoBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:background="@android:color/background_light"
-                android:gravity="center"
-                android:scaleType="fitXY"
-                android:src="@mipmap/ic_btn_pattern" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
-
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/btnBible"
-                android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/btnDev"
-                android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/btnPattern"
-                android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
-        </TableRow>
-
-    </TableLayout>
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

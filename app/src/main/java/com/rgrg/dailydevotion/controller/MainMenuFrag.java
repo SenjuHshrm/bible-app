@@ -1,15 +1,23 @@
 package com.rgrg.dailydevotion.controller;
 
 
+import android.graphics.Point;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.view.Display;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.rgrg.dailydevotion.R;
 
@@ -17,10 +25,7 @@ import java.io.InputStream;
 import java.util.Random;
 
 public class MainMenuFrag extends Fragment implements View.OnClickListener{
-    private ImageButton bibleBtn, ddBtn, infoBtn, viewBtn;
-    private ImageButton[] imgBtns = {bibleBtn, ddBtn, infoBtn, viewBtn};
-    private String[] btnImg = {"ic/bible.png", "ic/devotion.png", "ic/pattern.png"};
-    private int[] ids = {R.id.bibleBtn, R.id.ddBtn, R.id.infoBtn};
+
     public MainMenuFrag() {}
 
 
@@ -48,17 +53,36 @@ public class MainMenuFrag extends Fragment implements View.OnClickListener{
         }
     }
 
-    private void loadBtn(View v) {
-        try {
-            for(int x = 0; x < 3; x++) {
-                imgBtns[x] = (ImageButton) v.findViewById(ids[x]);
-                InputStream is = getActivity().getAssets().open(btnImg[x]);
-                Drawable d = Drawable.createFromStream(is, null);
-                imgBtns[x].setImageDrawable(d);
-                imgBtns[x].setOnClickListener(this);
+    private void loadBtn(View view) {
+        String[] tags = new String[]{"Bible","Devotion","Pattern","BIBLE","DEVOTION","DEVOTION\nPATTERN"};
+        int[] ds = new int[]{R.mipmap.ic_btn_bible,R.mipmap.ic_btn_devotion,R.mipmap.ic_btn_pattern};
+        //String[] str = new String[]{"BIBLE","DEVOTION","DEVOTION\nPATTERN"};
+        Display disp = getActivity().getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        disp.getSize(size);
+        GridLayout gl = (GridLayout) view.findViewById(R.id.mmenu_btn_con);
+        gl.setColumnCount(3);
+        gl.removeAllViews();
+        gl.setRowCount(2);
+        int btnWidth = size.x / 3, btnHeight = size.y / 6;
+        for(int i = 0; i < 6; i++){
+            if(i <= 2){
+                ImageButton btn = new ImageButton(getActivity());
+                btn.setTag(tags[i]);
+                btn.setBackground(ContextCompat.getDrawable(getContext(), ds[i]));
+                btn.setLayoutParams(new ViewGroup.LayoutParams(btnWidth, btnHeight));
+                btn.setOnClickListener(this);
+                gl.addView(btn);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+            if(i >= 3){
+                TextView txtView = new TextView(getActivity());
+                txtView.setGravity(Gravity.CENTER_HORIZONTAL);
+                txtView.setText(tags[i]);
+                txtView.setTextSize(20);
+                txtView.setTypeface(txtView.getTypeface(), Typeface.BOLD);
+                txtView.setLayoutParams(new ViewGroup.LayoutParams(btnWidth, ViewGroup.LayoutParams.WRAP_CONTENT));
+                gl.addView(txtView);
+            }
         }
     }
 
@@ -75,16 +99,13 @@ public class MainMenuFrag extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
-        switch(view.getId()){
-            case R.id.bibleBtn:
-                getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in,R.anim.left_out).replace(R.id.frag_con, new TestamentFrag(), "TestamentFrag").commit();
-                break;
-            case R.id.ddBtn:
-                getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in,R.anim.left_out).replace(R.id.frag_con, new MonthListFrag(), "MonthListFrag").commit();
-                break;
-            case R.id.infoBtn:
-                getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in,R.anim.left_out).replace(R.id.frag_con, new InstructionFrag(), "InstructionFrag").commit();
-                break;
+        Object tagObj = view.getTag();
+        if(tagObj.equals("Bible")){
+            getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in,R.anim.left_out).replace(R.id.frag_con, new TestamentFrag(), "TestamentFrag").commit();
+        } else if(tagObj.equals("Devotion")){
+            getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in,R.anim.left_out).replace(R.id.frag_con, new MonthListFrag(), "MonthListFrag").commit();
+        } else if(tagObj.equals("Pattern")){
+            getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in,R.anim.left_out).replace(R.id.frag_con, new InstructionFrag(), "InstructionFrag").commit();
         }
         ImageButton ib = (ImageButton) getActivity().findViewById(R.id.searchBtn);
         ib.setVisibility(View.INVISIBLE);

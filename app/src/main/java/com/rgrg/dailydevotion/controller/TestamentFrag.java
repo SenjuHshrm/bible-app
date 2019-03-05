@@ -34,7 +34,7 @@ public class TestamentFrag extends Fragment implements  View.OnClickListener{
     private void loadBg(){
         try {
             FrameLayout fl = (FrameLayout) getActivity().findViewById(R.id.frag_con);
-            InputStream is = getActivity().getAssets().open("bg/bg_bright.png");
+            InputStream is = getActivity().getAssets().open("bg/ddev_bg.jpeg");
             Drawable d = Drawable.createFromStream(is, null);
             fl.setBackground(d);
         } catch (Exception e) {

@@ -6,13 +6,11 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
@@ -55,8 +53,7 @@ public class MainMenuFrag extends Fragment implements View.OnClickListener{
 
     private void loadBtn(View view) {
         String[] tags = new String[]{"Bible","Devotion","Pattern","BIBLE","DEVOTION","DEVOTION\nPATTERN"};
-        int[] ds = new int[]{R.mipmap.ic_btn_bible,R.mipmap.ic_btn_devotion,R.mipmap.ic_btn_pattern};
-        //String[] str = new String[]{"BIBLE","DEVOTION","DEVOTION\nPATTERN"};
+        String[] dirs = new String[]{"ic/bible.png","ic/devotion.png","ic/pattern.png"};
         Display disp = getActivity().getWindowManager().getDefaultDisplay();
         Point size = new Point();
         disp.getSize(size);
@@ -69,7 +66,7 @@ public class MainMenuFrag extends Fragment implements View.OnClickListener{
             if(i <= 2){
                 ImageButton btn = new ImageButton(getActivity());
                 btn.setTag(tags[i]);
-                btn.setBackground(ContextCompat.getDrawable(getContext(), ds[i]));
+                insertIc(btn, dirs[i]);
                 btn.setLayoutParams(new ViewGroup.LayoutParams(btnWidth, btnHeight));
                 btn.setOnClickListener(this);
                 gl.addView(btn);
@@ -83,6 +80,16 @@ public class MainMenuFrag extends Fragment implements View.OnClickListener{
                 txtView.setLayoutParams(new ViewGroup.LayoutParams(btnWidth, ViewGroup.LayoutParams.WRAP_CONTENT));
                 gl.addView(txtView);
             }
+        }
+    }
+
+    private void insertIc(ImageButton ib, String dir){
+        try {
+            InputStream is = getActivity().getAssets().open(dir);
+            Drawable d = Drawable.createFromStream(is,null);
+            ib.setBackground(d);
+        } catch(Exception e){
+            e.printStackTrace();
         }
     }
 

@@ -52,6 +52,7 @@
                                               <map>
                                                 <entry key="color" value="000000" />
                                                 <entry key="scalingPercent" value="99" />
+                                                <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -63,10 +64,10 @@
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="ffffff" />
-                                      <entry key="backgroundLayerName" value="ic_btn_pattern_b" />
-                                      <entry key="foregroundImage" value="D:\53766471_328009297855450_7355807616741670912_n.png" />
-                                      <entry key="foregroundLayerName" value="ic_btn_pattern_f" />
-                                      <entry key="outputName" value="ic_btn_pattern" />
+                                      <entry key="backgroundLayerName" value="ic_btn_devotion_latest_b" />
+                                      <entry key="foregroundImage" value="E:\Thesis\ICON LATEST 1.png" />
+                                      <entry key="foregroundLayerName" value="ic_btn_devotion_latest_f" />
+                                      <entry key="outputName" value="ic_btn_devotion_latest" />
                                     </map>
                                   </option>
                                 </PersistentState>

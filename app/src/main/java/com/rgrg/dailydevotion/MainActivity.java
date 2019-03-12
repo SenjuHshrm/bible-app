@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 
@@ -31,6 +32,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadSearchIcon() {
         try {
+            Button b = (Button) findViewById(R.id.appBackBtn);
+            b.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onBackPressed();
+                }
+            });
             ImageButton ib = (ImageButton) findViewById(R.id.searchBtn);
             InputStream is = getAssets().open("ic/search.png");
             Drawable d = Drawable.createFromStream(is,null);

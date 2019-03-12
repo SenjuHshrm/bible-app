@@ -6,9 +6,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.rgrg.dailydevotion.R;
@@ -51,18 +48,6 @@ public class ChapterViewFrag extends Fragment {
         bookname = (TextView) view.findViewById(R.id.BookNameView);
         bookname.setText(BOOKNAME);
         GenerateContent(TYPE, cont);
-        Button back = (Button) view.findViewById(R.id.backBtn);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity()
-                        .getSupportFragmentManager()
-                        .beginTransaction()
-                        .setCustomAnimations(R.anim.left_in,R.anim.fade_out)
-                        .replace(R.id.frag_con, ChapterListFrag.main(ChapterViewFrag.B_CHAPTERS, ChapterViewFrag.TYPE,  ChapterViewFrag.BOOKNAME), "ChapterListFrag")
-                        .commit();
-            }
-        });
         return view;
     }
 

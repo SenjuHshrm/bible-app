@@ -1,5 +1,6 @@
 package com.rgrg.dailydevotion;
 
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.support.v7.app.AlertDialog;
 
 import com.rgrg.dailydevotion.controller.*;
 import com.rgrg.dailydevotion.database.DatabaseHelper;
@@ -65,7 +67,18 @@ public class MainActivity extends AppCompatActivity {
         Fragment currPage = fragManager.findFragmentById(R.id.frag_con);
         switch(currPage.getTag()){
             case "MainMenuFrag":
-                finish();
+                AlertDialog.Builder exitApp = new AlertDialog.Builder(this);
+                exitApp.setCancelable(true)
+                        .setMessage("Do you want to exit app?")
+                        .setNegativeButton("No", null)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                finish();
+                            }
+                        });
+                AlertDialog build = exitApp.create();
+                build.show();
                 break;
             case "TestamentFrag":
                 getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.left_in,R.anim.fade_out).replace(R.id.frag_con, new MainMenuFrag(), "MainMenuFrag").commit();

@@ -5,19 +5,16 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
-import android.os.Build;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
-
-import com.rgrg.dailydevotion.MainActivity;
+import com.rgrg.dailydevotion.LoadingActivity;
 import com.rgrg.dailydevotion.R;
-
 import java.util.Calendar;
-
-import static com.rgrg.dailydevotion.app.DailyDevotion.CHANNEL_ID;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class DailyDevotionService extends Service {
+
 
     public DailyDevotionService() {
 
@@ -62,9 +59,9 @@ public class DailyDevotionService extends Service {
     private void notifyUser(String str) {
         try {
             String msg = "Time for your " + str + " journal";
-            PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 1020, new Intent(getApplicationContext(), MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
+            PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), NotificationID.getID(), new Intent(getApplicationContext(), LoadingActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
             NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
-            NotificationCompat.Builder notif = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
+            NotificationCompat.Builder notif = new NotificationCompat.Builder(getApplicationContext(), Integer.toString(NotificationID.getID()))
                     .setContentIntent(pendingIntent)
                     .setContentTitle("Daily Devotion")
                     .setContentText(msg)
@@ -72,9 +69,17 @@ public class DailyDevotionService extends Service {
                     .setPriority(NotificationCompat.PRIORITY_HIGH)
                     .setDefaults(NotificationCompat.DEFAULT_ALL)
                     .setAutoCancel(true);
-            notificationManager.notify(1020, notif.build());
+            Notification nt = notif.build();
+            notificationManager.notify(NotificationID.getID(), nt);
         } catch (NullPointerException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static class NotificationID {
+        private static final AtomicInteger c = new AtomicInteger(0);
+        public static int getID() {
+            return c.incrementAndGet();
         }
     }
 }

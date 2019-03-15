@@ -26,13 +26,9 @@
         <activity android:name=".MainActivity" />
 
         <service
-            android:name=".notification_legacy.DailyDevotionService"
-            android:enabled="true"
-            android:exported="false"/>
+            android:name=".notification_legacy.DailyDevotionService" />
         <service
-            android:name=".notification_latest.DailyDevotionService"
-            android:enabled="true"
-            android:exported="false"/>
+            android:name=".notification_latest.DailyDevotionService" />
 
         <receiver
             android:name=".app.StartAppOnBoot"

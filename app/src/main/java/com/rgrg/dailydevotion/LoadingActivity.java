@@ -33,18 +33,17 @@ public class LoadingActivity extends AppCompatActivity {
     }
 
     private void loadSys() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            Intent i = new Intent(this, com.rgrg.dailydevotion.notification_latest.DailyDevotionService.class);
+            startForegroundService(i);
+        } else {
+            Intent i = new Intent(this, com.rgrg.dailydevotion.notification_legacy.DailyDevotionService.class);
+            startService(i);
+        }
         Handler handler = new Handler();
         handler.postDelayed(new Runnable(){
             @Override
             public void run(){
-
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-                    Intent i = new Intent(getApplicationContext(), com.rgrg.dailydevotion.notification_latest.DailyDevotionService.class);
-                    startForegroundService(i);
-                } else if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.N){
-                    Intent i = new Intent(getApplicationContext(), com.rgrg.dailydevotion.notification_legacy.DailyDevotionService.class);
-                    startService(i);
-                }
                 Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(intent);
                 finish();
